@@ -1,15 +1,11 @@
-module ProgramCounter(PCNext, PC, Reset, Clk);
+module ProgramCounter(PCNext, PC, reset, clock);
     input[31:0] PCNext;
-    input Reset, Clk;
+    input reset, clock;
     output reg[31:0] PC;
 
-    initial begin
-        PC <= 32'b0;
-    end
-
-    always @(posedge Clk)
+    always @(posedge clock)
         begin
-            if (Reset == 1)
+            if (reset)
                 begin
                     PC <= 32'b0;
                 end

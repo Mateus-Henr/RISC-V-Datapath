@@ -10,8 +10,6 @@ add x1, x1, x2
 sub x1, x1, x2
 sub x1, x1, x2
 
-beq x1, x2, SAIDA
-
 # Caso o fluxo venha para cá, seu processador está errado
 add x1, x1, x1
 sw x1, 0(x0)
