@@ -49,11 +49,11 @@ module DataMemory(address, writeData, clock, memWrite, memRead, ReadData, reset)
         begin
             if (memWrite)
                 begin
-                    dataArray[Address>>2] <= WriteData;
+                    dataArray[address] <= writeData;
                 end
             else
                 begin
-
+                    memRead <= 32'b0;
                 end
         end
 
@@ -61,12 +61,12 @@ module DataMemory(address, writeData, clock, memWrite, memRead, ReadData, reset)
         begin
             if (memRead)
                 begin
-
+                    memRead <= dataArray[address];
                 end
-            else begin
-
-            end
+            else
+                begin
+                    memRead <= 32'b0;
+                end
         end
-
 
 endmodule
