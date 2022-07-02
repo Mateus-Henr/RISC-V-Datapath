@@ -14,15 +14,29 @@
 //-------------------------------------------------------
 // Purpose:    Stores the registers
 
-module RegisterMemory(outRS1, outRS2, rs1, rs2, rsWrite, dataWrite, rWrite, clk);
+module RegisterMemory(
+    outRS1,
+    outRS2,
+    registerArray,
+    rs1,
+    rs2,
+    rsWrite,
+    dataWrite,
+    rWrite,
+    clk
+);
 
-    input[4:0] rs1, rs2;
-    input[31:0] rsWrite, dataWrite;
-    input rWrite;
-    output[31:0] outRS1, outRS2;
+    output reg[31:0] outRS1;                // Output to the ALU
+    output reg[31:0] outRS2;                // Output to the Data write / multiplexer
+    output reg[31:0] registerArray[31:0];   // Output to the Datapath
 
-    reg[31:0] registerArray[31:0];
+    input[4:0] rs1;                         // Read register1 from the instruction
+    input[4:0] rs2;                         // Read register2 from the instruction
+    input[31:0] rsWrite;                    // Write register form the instruction
+    input[31:0] dataWrite;                  // Data write from the multplexer
+    input rWrite;                           // Register write signal from the controller
 
+    // Set the defalt value of the register memory
     initial begin
         registerArray[0] <= 32'b0;
         registerArray[1] <= 32'b1;

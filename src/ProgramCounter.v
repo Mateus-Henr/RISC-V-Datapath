@@ -14,13 +14,20 @@
 //-------------------------------------------------------
 // Purpose:    Counter
 
-module ProgramCounter(outPCNext, PCNext, reset, clock);
+module ProgramCounter(
+    outPCNext,
+    PCNext,
+    reset,
+    clock
+);
 
-    input[31:0] PCNext;
-    input reset, clock;
+    output reg[31:0] outPCNext; // PC next to the instruction memory
 
-    output reg[31:0] outPCNext;
+    input[31:0] PCNext;         // PC next from the and multplexer
+    input reset;                // Reset signal from datapath
+    input clock;                // CLock from the datapath
 
+    // chec if the pc needs to reset and read the next pc
     always @(posedge clock)
         begin
             if (reset) // If reset signal is activated, we set the PC back to 0.

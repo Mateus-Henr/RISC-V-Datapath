@@ -14,15 +14,20 @@
 //-------------------------------------------------------
 // Purpose:    Multiplexer
 
-module mux_2to1_32bit(out, input1, input2, selector);
+module mux_2to1_32bit(
+    out,
+    input1,
+    input2,
+    selector
+);
 
-    input[31:0] input1, input2;
-    input selector;
+    output reg[31:0] out;   // Output to the register memory / ALU
 
-    output[31:0] out;
+    input[31:0] input1;     // Input from the ALU / output register 2
+    input[31:0] input2;     // Input from the Readed data in data memory / Immediate genaretor
+    input selector;         // Input from the controler memory toregister / ALU Src
 
-    reg[31:0] out;
-
+    //chouse the value to the ALU / value to write in the register
     always @(input1, input2, selector)
         begin
             if (selector)

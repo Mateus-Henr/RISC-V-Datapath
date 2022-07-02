@@ -14,15 +14,17 @@
 //-------------------------------------------------------
 // Purpose:    Stores the instructions
 
-module InstructionMemory(out, PC);
+module InstructionMemory(out, PC, reset);
 
-    input[31:0] PC;
+    output reg[31:0] out;               // Instruction to the Datapath
 
-    output[31:0] out;
+    input[31:0] PC;                     // Program counter from the PC module
+    input reset;                        // Reset signal from the datapath
 
-    reg[31:0] instructionArray[31:0];
-    reg[7:0] PCPos;
+    reg[31:0] instructionArray[31:0];   // Instruction memory
 
+
+    // start the codelines
     initial begin
         instructionArray[0] <= 32'b0;
         instructionArray[1] <= 32'b0;
@@ -57,6 +59,8 @@ module InstructionMemory(out, PC);
         instructionArray[30] <= 32'b0;
         instructionArray[31] <= 32'b0;
     end
+
+    //read the codeline, check if reset and reset
     always @(PC)
         begin
             if (reset)
@@ -94,7 +98,7 @@ module InstructionMemory(out, PC);
                     instructionArray[30] <= 32'b0;
                     instructionArray[31] <= 32'b0;
                 end
-            out <= instructArray[PCPos];
+            out <= instructArray[PC];
         end
 
 endmodule : InstructionMemory

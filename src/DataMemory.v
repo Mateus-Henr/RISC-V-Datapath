@@ -14,15 +14,28 @@
 //-------------------------------------------------------
 // Purpose:    Stores the data
 
-module DataMemory(address, writeData, clock, memWrite, memRead, readData, reset);
+module DataMemory(
+    address,
+    writeData,
+    clock,
+    memWrite,
+    memRead,
+    readData,
+    reset
+);
 
-    input[31:0] address, writeData;
-    input reset, clock, memWrite, memRead;
+    output reg[31:0] readData;  // readed data to the multiplexer
 
-    output reg[31:0] readData;
+    input[31:0] address;        // Address to pick from the ALU
+    input[31:0] writeData;      // Out register from the register memory
+    input reset;                // Reset signal to reset the memory
+    input clock;                // Clock signal
+    input memWrite;             // Memory write signal from the Controller
+    input memRead;              // Memory read signal from the Controller
 
-    reg[31:0] dataArray[34:0];
+    reg[31:0] dataArray[34:0];  // Data memory
 
+    // reset all the memory to the deffalt
     always @(reset)
         begin
             if (reset)
@@ -61,6 +74,8 @@ module DataMemory(address, writeData, clock, memWrite, memRead, readData, reset)
                     dataArray[31] <= 32'b0;
                 end
         end
+
+    // Write or read from the data memory based on the address
     always @(posedge clock)
         begin
             if (memWrite)

@@ -14,11 +14,14 @@
 //-------------------------------------------------------
 // Purpose:    Receives the PC and returns the next instruction
 
-module PCAdder(outPCAdder, PC);
+module PCAdder(
+    outPCAdder,
+    PC
+);
 
-    input[31:0] PC;
+    output reg[31:0] outPCAdder;    // PC adder +4 to the and multiplexer
 
-    output reg[31:0] outPCAdder;
+    input[31:0] PC;                 // PC input from the PC module
 
     always @(PC)
         begin
