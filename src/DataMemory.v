@@ -1,3 +1,19 @@
+//-------------------------------------------------------
+// File Name: DataMemory.v
+// Type: module
+// Department: Ciencias da computação - UFV-Florestal
+// Author: João Victor, Vitor Ribeiro, Mateus Henrique
+// Author's Email: joao.andrade1@ufv.br, mateus.h.figueredo@ufv.br, vitor.lacerda@ufv.br
+//-------------------------------------------------------
+// Release history
+// Version Date            Description
+// 0.1     01/07/2022      Archive creation
+// 0.2     02/07/2022      Version with code
+//-------------------------------------------------------
+// Keywords:   data, memory, storage
+//-------------------------------------------------------
+// Purpose:    Stores the data
+
 module DataMemory(address, writeData, clock, memWrite, memRead, readData, reset);
 
     input[31:0] address, writeData;
@@ -50,10 +66,6 @@ module DataMemory(address, writeData, clock, memWrite, memRead, readData, reset)
             if (memWrite)
                 begin
                     dataArray[address] <= writeData;
-                end
-            else
-                begin
-                    memRead <= 32'b0;
                 end
         end
 

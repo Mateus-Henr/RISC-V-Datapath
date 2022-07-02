@@ -1,9 +1,19 @@
-// -------------------------------------------------------------------
-// @author Mateus
-// @copyright (C) 2022, <COMPANY>
-//
-// Created : 01. Jul 2022 13:31
-//-------------------------------------------------------------------
+//-------------------------------------------------------
+// ile Name: ALU.v
+// Type: module
+// Department: Ciência da computação - UFV-Florestal
+// Author: João Victor, Vitor Ribeiro, Mateus Henrique
+// Author's Email: joao.andrade1@ufv.br, mateus.h.figueredo@ufv.br, vitor.lacerda@ufv.br
+//-------------------------------------------------------
+// Release history
+// Version Date            Description
+// 0.1     01/07/2022      Archive creation
+// 0.2     02/07/2022      Version with code
+//-------------------------------------------------------
+// Keywords:   Arithmetic, Logic
+//-------------------------------------------------------
+// Purpose:    Executes logic and arithmetic operations
+
 module ALU(ALUOut, ALUControl, input1, input2);
 
     input[31:0] input1, input2;

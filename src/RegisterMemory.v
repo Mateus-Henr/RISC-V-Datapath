@@ -1,14 +1,24 @@
-// -------------------------------------------------------------------
-// @author Mateus
-// @copyright (C) 2022, <COMPANY>
-//
-// Created : 01. Jul 2022 13:20
-//-------------------------------------------------------------------
-module RegisterMemory(outRS1, outRS2, rs1, rs2, rsWrite, dataWrite, clk);
+//-------------------------------------------------------
+// File Name: RegisterMemory.v
+// Type: module
+// Department: Ciencias da computação - UFV-Florestal
+// Author: João Victor, Vitor Ribeiro, Mateus Henrique
+// Author's Email: joao.andrade1@ufv.br, mateus.h.figueredo@ufv.br, vitor.lacerda@ufv.br
+//-------------------------------------------------------
+// Release history
+// Version Date            Description
+// 0.1     01/07/2022      Archive creation
+// 0.2     02/07/2022      Version with code
+//-------------------------------------------------------
+// Keywords:   data, register, storage
+//-------------------------------------------------------
+// Purpose:    Stores the registers
+
+module RegisterMemory(outRS1, outRS2, rs1, rs2, rsWrite, dataWrite, rWrite, clk);
 
     input[4:0] rs1, rs2;
     input[31:0] rsWrite, dataWrite;
-
+    input rWrite;
     output[31:0] outRS1, outRS2;
 
     reg[31:0] registerArray[31:0];
@@ -50,7 +60,7 @@ module RegisterMemory(outRS1, outRS2, rs1, rs2, rsWrite, dataWrite, clk);
 
     always @(posedge clk)
         begin
-            if (RegWrite && ReWrite != 32'b0)
+            if (rWrite)
                 begin
                     registerArray[rsWrite] <= dataWrite;
                 end

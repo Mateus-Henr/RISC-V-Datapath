@@ -1,11 +1,32 @@
-module ALUControl(outALUControl, funct7, funct3, ALUOp);
+//-------------------------------------------------------
+// File Name: ALUContol.v
+// Type: module
+// Department: Ciencias da computação - UFV-Florestal
+// Author: João Victor, Vitor Ribeiro, Mateus Henrique
+// Author's Email: joao.andrade1@ufv.br, mateus.h.figueredo@ufv.br, vitor.lacerda@ufv.br
+//-------------------------------------------------------
+// Release history
+// Version Date            Description
+// 0.1     01/07/2022      Archive creation
+// 0.2     02/07/2022      Version with code
+//-------------------------------------------------------
+// Keywords:   alu, control, controller, alu control
+//-------------------------------------------------------
+// Purpose:    Control of the alu
 
-    input[6:0] funct7;
-    input[3:0] funct3;
-    input[1:0] ALUOp;
+module ALUControl(
+                    outALUControl,
+                    funct7,
+                    funct3,
+                    ALUOp
+                 );
+    output[4:0] outALUControl;  // Output to control the ALU
 
-    output[4:0] outALUControl;
+    input[6:0] funct7;          // Function 7 of the Instruction
+    input[3:0] funct3;          // Function 3 of the Instruction
+    input[1:0] ALUOp;           // ALU operation from the Controller
 
+// Basic ALU that chooses which operation needs to be done
     always @(*)
         case (ALUOp)
             2'b00: // Add (00) for loads and stores.

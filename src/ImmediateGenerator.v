@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: PCAdderShift.v
+// File Name: ImmediateGenerator.v
 // Type: module
 // Department: Ciencias da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique
@@ -10,19 +10,24 @@
 // 0.1     01/07/2022      Archive creation
 // 0.2     02/07/2022      Version with code
 //-------------------------------------------------------
-// Keywords:   PC, adder, shift
+// Keywords:   immediate, generate, generator
 //-------------------------------------------------------
-// Purpose:    Receives the PC and sums the PC and the immediate
+// Purpose:    Used to amplify Immediate
 
-module PCAdder(PCAddShift, PC, immediate);
+module ImmediateGenerator(outImmediate, immediate);
 
-    input[31:0] PC, immediate;
-
-    output reg[31:0] PCAddShift;
-
-    always @(PC)
+    input[15:0] immediate;
+    
+    always @(*)
         begin
-            PCAddShift <= PC+immediate;
+            if (!immediate[15])
+                begin
+                    outImmediate <= immediate | 32'b0;
+                end
+            else
+                begin
+                    outImmediate <= immediate & 32'b1;
+                end
         end
 
-endmodule
+endmodule : ImmediateGenerator
