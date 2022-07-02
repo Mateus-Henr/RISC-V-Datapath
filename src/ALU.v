@@ -5,6 +5,7 @@
 // Created : 01. Jul 2022 13:31
 //-------------------------------------------------------------------
 module ALU(ALUOut, ALUControl, input1, input2);
+
     input[31:0] input1, input2;
     input[3:0] ALUControl;
 

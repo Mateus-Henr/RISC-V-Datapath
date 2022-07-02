@@ -5,6 +5,7 @@
 // Created : 01. Jul 2022 13:20
 //-------------------------------------------------------------------
 module InstructionMemory(out, PC);
+
     input[31:0] PC;
     input clock;
 

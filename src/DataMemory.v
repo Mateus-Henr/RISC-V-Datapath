@@ -1,9 +1,9 @@
-module DataMemory(address, writeData, clock, memWrite, memRead, ReadData, reset);
+module DataMemory(address, writeData, clock, memWrite, memRead, readData, reset);
 
     input[31:0] address, writeData;
     input reset, clock, memWrite, memRead;
 
-    output reg[31:0] ReadData;
+    output reg[31:0] readData;
 
     reg[31:0] dataArray[34:0];
 
