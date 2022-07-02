@@ -14,10 +14,16 @@
 //-------------------------------------------------------
 // Purpose:    Used to amplify Immediate
 
-module ImmediateGenerator(outImmediate, immediate);
+module ImmediateGenerator(
+    outImmediate,
+    immediate
+);
 
-    input[15:0] immediate;
-    
+    output reg[31:0] outImmediate;  // Immediate with 32 bits
+
+    input[15:0] immediate;      // Immediate with 16 bits
+
+    // Amplify Immediate extendint with zeros for positive numbers and ones for the negative numbers
     always @(*)
         begin
             if (!immediate[15])

@@ -58,11 +58,15 @@ module RegisterMemory(outRS1, outRS2, rs1, rs2, rsWrite, dataWrite, rWrite, clk)
         registerArray[31] <= 32'b0;
     end
 
+    // Checks if values are different from 0.
     always @(posedge clk)
         begin
             if (rWrite)
                 begin
-                    registerArray[rsWrite] <= dataWrite;
+                    if (rsWrite)
+                        begin
+                            registerArray[rsWrite] <= dataWrite;
+                        end
                 end
         end
 

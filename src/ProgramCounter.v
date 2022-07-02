@@ -23,7 +23,7 @@ module ProgramCounter(outPCNext, PCNext, reset, clock);
 
     always @(posedge clock)
         begin
-            if (reset)
+            if (reset) // If reset signal is activated, we set the PC back to 0.
                 begin
                     outPCNext <= 32'b0;
                 end
