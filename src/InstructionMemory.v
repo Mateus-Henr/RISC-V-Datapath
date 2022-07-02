@@ -50,7 +50,9 @@ module InstructionMemory(out, PC);
                     instructionArray[30] <= 32'b0;
                     instructionArray[31] <= 32'b0;
                 end
+
             PCPos <= PC/4;
             out <= instructArray[PCPos];
         end
+
 endmodule : InstructionMemory

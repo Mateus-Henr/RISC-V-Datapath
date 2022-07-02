@@ -1,24 +1,23 @@
-module mux_2to1_32bit(out, inA, inB, zero, branch, sel);
+module mux_2to1_32bit(out, input1, input2, zero, branch, selector);
 
-    input[31:0] inA;
-    input[31:0] inB;
+    input[31:0] input1, input2;
     input zero, branch;
 
     output[31:0] out;
 
     reg[31:0] out;
-    reg sel;
+    reg selector;
 
-    always @(inA, inB, inC, sel)
+    always @(input1, input2, inC, selector)
         begin
-            sel <= zero | branch;
-            if (sel == 0)
+            selector <= zero | branch;
+            if (selector)
                 begin
-                    out <= inA;
+                    out <= input2;
                 end
             else
                 begin
-                    out <= inB;
+                    out <= input1;
                 end
         end
 

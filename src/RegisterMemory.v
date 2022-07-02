@@ -5,11 +5,13 @@
 // Created : 01. Jul 2022 13:20
 //-------------------------------------------------------------------
 module RegisterMemory(outRS1, outRS2, rs1, rs2, rsWrite, dataWrite, clk);
+
     input[4:0] rs1, rs2;
     input[31:0] rsWrite, dataWrite;
+
     output[31:0] outRS1, outRS2;
 
-    reg[32:0] registerArray[32:0];
+    reg[31:0] registerArray[31:0];
 
     initial begin
         registerArray[0] <= 32'b0;
