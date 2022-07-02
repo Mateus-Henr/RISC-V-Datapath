@@ -1,4 +1,4 @@
-# Risc-V-Assembler
+# RISC V Datapath
 > Practical Work 02 – Computer Organization 1 – Trio
 Description: It consists in the implementation of a simplified version of the RISC-V data path.
 # Collaborators
