@@ -15,18 +15,18 @@
 // Purpose:    Datapath
 
 // Includes
-`include "ALU.sv"
-`include "ALUControl.sv"
-`include "Controller.sv"
-`include "DataMemory.sv"
-`include "ImmediateGenerator.sv"
-`include "InstructionMemory.sv"
-`include "MUX32_2_1.sv"
-`include "MUX32_2_1_and.sv"
-`include "PCAdder.sv"
-`include "PCAdderShift.sv"
-`include "ProgramCounter.sv"
-`include "RegisterMemory.sv"
+`include "ALU.v"
+`include "ALUControl.v"
+`include "Controller.v"
+`include "DataMemory.v"
+`include "ImmediateGenerator.v"
+`include "InstructionMemory.v"
+`include "MUX32_2_1.v"
+`include "MUX32_2_1_and.v"
+`include "PCAdder.v"
+`include "PCAdderShift.v"
+`include "ProgramCounter.v"
+`include "RegisterMemory.v"
 
 module Datapath(
     registerArray1,
