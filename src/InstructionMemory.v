@@ -14,7 +14,11 @@
 //-------------------------------------------------------
 // Purpose:    Stores the instructions
 
-module InstructionMemory(out, PC, reset);
+module InstructionMemory(
+    out,
+    PC,
+    reset
+);
 
     output reg[31:0] out;               // Instruction to the Datapath
 
@@ -98,7 +102,7 @@ module InstructionMemory(out, PC, reset);
                     instructionArray[30] <= 32'b0;
                     instructionArray[31] <= 32'b0;
                 end
-            out <= instructArray[PC];
+            out <= instructArray[PC/4];
         end
 
 endmodule : InstructionMemory

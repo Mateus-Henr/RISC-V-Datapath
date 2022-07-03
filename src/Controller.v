@@ -15,6 +15,7 @@
 // Purpose:    control of the datapath
 
 module Controller(
+    // RegDst,
     ALUOp,
     branch,
     regWrite,
@@ -29,54 +30,55 @@ module Controller(
     output regWrite;            // Register write signal to the register memory
     output memoryToRegister;    // Memory to register signal to the multplexer
     output ALUSrc;              // ALU Src signal to the mutplexer
-    output memoryRead;          // Memory read signal to the Datamemory
-    output memoryWrite;         // Memory write signal to the Datamemory
+    output memoryRead;          // read Memory signal to the Datamemory
+    output memoryWrite;         // write Memory signal to the Datamemory
     output reg[1:0] ALUOp;      // ALU operation to the ALU Controller
+    //  output reg RegDst;
 
     input opcode;               // Opcode from the instruction
 
-    // Control logic to generate signals for datapath modules
+    // logic of the Controller, used to generate signals to datapath modules
     always @(opcode)
         begin
             case (opcode)
                 7'b0110011: // R-format
                     begin
-                        ALUSrc <= 0;
-                        memoryToRegister <= 0;
-                        regWrite <= 1;
-                        memoryRead <= 0;
-                        memoryWrite <= 0;
-                        branch <= 0;
+                        ALUSrc <= 1'b0;
+                        memoryToRegister <= 1'b0;
+                        regWrite <= 1'b1;
+                        memoryRead <= 1'b0;
+                        memoryWrite <= 1'b0;
+                        branch <= 1'b0;
                         ALUOp <= 2'b10;
                     end
                 7'b0000011: // LD
                     begin
-                        ALUSrc <= 1;
-                        memoryToRegister <= 1;
-                        regWrite <= 1;
-                        memoryRead <= 1;
-                        memoryWrite <= 0;
-                        branch <= 0;
+                        ALUSrc <= 1'b1;
+                        memoryToRegister <= 1'b1;
+                        regWrite <= 1'b1;
+                        memoryRead <= 1'b1;
+                        memoryWrite <= 1'b0;
+                        branch <= 1'b0;
                         ALUOp <= 2'b00;
                     end
                 7'b0100011: // SD
                     begin
-                        ALUSrc <= 1;
-                        memoryToRegister <= 0;
-                        regWrite <= 0;
-                        memoryRead <= 0;
-                        memoryWrite <= 1;
-                        branch <= 0;
+                        ALUSrc <= 1'b1;
+                        memoryToRegister <= 1'b0;
+                        regWrite <= 1'b0;
+                        memoryRead <= 1'b0;
+                        memoryWrite <= 1'b1;
+                        branch <= 1'b0;
                         ALUOp <= 2'b00;
                     end
                 7'b1100011: // BEQ
                     begin
-                        ALUSrc <= 0;
-                        memoryToRegister <= 0;
-                        regWrite <= 0;
-                        memoryRead <= 0;
-                        memoryWrite <= 0;
-                        branch <= 1;
+                        ALUSrc <= 1'b0;
+                        memoryToRegister <= 1'b0;
+                        regWrite <= 1'b0;
+                        memoryRead <= 1'b0;
+                        memoryWrite <= 1'b0;
+                        branch <= 1'b1;
                         ALUOp <= 2'b01;
                     end
             endcase

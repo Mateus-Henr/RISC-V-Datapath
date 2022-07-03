@@ -27,7 +27,7 @@ module ProgramCounter(
     input reset;                // Reset signal from datapath
     input clock;                // CLock from the datapath
 
-    // chec if the pc needs to reset and read the next pc
+    // Check if the PC needs to reset or reads the next pc
     always @(posedge clock)
         begin
             if (reset) // If reset signal is activated, we set the PC back to 0.

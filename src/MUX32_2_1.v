@@ -27,7 +27,7 @@ module mux_2to1_32bit(
     input[31:0] input2;     // Input from the Readed data in data memory / Immediate genaretor
     input selector;         // Input from the controler memory toregister / ALU Src
 
-    //chouse the value to the ALU / value to write in the register
+    //choose the value for the ALU / value to write in the register
     always @(input1, input2, selector)
         begin
             if (selector)

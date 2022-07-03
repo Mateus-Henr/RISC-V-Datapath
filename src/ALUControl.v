@@ -15,11 +15,11 @@
 // Purpose:    Control of the alu
 
 module ALUControl(
-                    outALUControl,
-                    funct7,
-                    funct3,
-                    ALUOp
-                 );
+    outALUControl,
+    funct7,
+    funct3,
+    ALUOp
+);
     output[4:0] outALUControl;  // Output to control the ALU
 
     input[6:0] funct7;          // Function 7 of the Instruction

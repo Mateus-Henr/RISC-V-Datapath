@@ -23,14 +23,14 @@ module mux_2to1_32bit(
 
     output reg[31:0] PCNext;    // Next progam to the PC module
 
-    input[31:0] addPC;          // Program counter +4 from the adder
+    input[31:0] addPC;          // Program counter +4 for the adder
     input[31:0] addPCShift;     // Program counter shifted from the shift adder
     input zero;                 // Zero signal from the ALU
     input branch;               // Branch signal from the controler
 
     reg selector;               // Selector to select the adder
 
-    // Make a and with zero and branch to chouse the adder
+    // Makes a "and" with "zero" signal and branch to chouse the adder
     always @(addPC, addPCShift, inC)
         begin
             selector <= zero & branch;

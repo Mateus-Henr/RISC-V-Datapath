@@ -10,7 +10,7 @@
 // 0.1     01/07/2022      Archive creation
 // 0.2     02/07/2022      Version with code
 //-------------------------------------------------------
-// Keywords:   data, register, storage
+// Kxzeywords:   data, register, storage
 //-------------------------------------------------------
 // Purpose:    Stores the registers
 
@@ -36,7 +36,7 @@ module RegisterMemory(
     input[31:0] dataWrite;                  // Data write from the multplexer
     input rWrite;                           // Register write signal from the controller
 
-    // Set the defalt value of the register memory
+    // Set the defalt values of the registers in memory
     initial begin
         registerArray[0] <= 32'b0;
         registerArray[1] <= 32'b1;

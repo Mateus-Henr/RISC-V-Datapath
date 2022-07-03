@@ -19,7 +19,7 @@ module PCAdder(
     PC
 );
 
-    output reg[31:0] outPCAdder;    // PC adder +4 to the and multiplexer
+    output reg[31:0] outPCAdder;    // PC adder +4 to the "and" multiplexer
 
     input[31:0] PC;                 // PC input from the PC module
 
