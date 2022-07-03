@@ -102,11 +102,13 @@ module RegisterMemory(
     input reset;                            // Reset signal
     input clk;                              // Clock
 
+    reg[31:0] registerArray[31:0];
+
     // Set the defalt values of the registers in memory
     initial
         begin
             registerArray[0] <= 32'b0;
-            registerArray[1] <= 32'b1;
+            registerArray[1] <= 32'b1;          // 1 in binary
             registerArray[2] <= 32'b0;
             registerArray[3] <= 32'b0;
             registerArray[4] <= 32'b0;
@@ -134,14 +136,48 @@ module RegisterMemory(
             registerArray[26] <= 32'b0;
             registerArray[27] <= 32'b0;
             registerArray[28] <= 32'b0;
-            registerArray[29] <= 32'b11111100; // 252 in binary
+            registerArray[29] <= 32'b11111100;  // 252 in binary
             registerArray[30] <= 32'b0;
             registerArray[31] <= 32'b0;
+
+            registerArray1 <= registerArray[0];
+            registerArray2 <= registerArray[1];
+            registerArray3 <= registerArray[2];
+            registerArray4 <= registerArray[3];
+            registerArray5 <= registerArray[4];
+            registerArray6 <= registerArray[5];
+            registerArray7 <= registerArray[6];
+            registerArray8 <= registerArray[7];
+            registerArray9 <= registerArray[8];
+            registerArray10 <= registerArray[9];
+            registerArray11 <= registerArray[10];
+            registerArray12 <= registerArray[11];
+            registerArray13 <= registerArray[12];
+            registerArray14 <= registerArray[13];
+            registerArray15 <= registerArray[14];
+            registerArray16 <= registerArray[15];
+            registerArray17 <= registerArray[16];
+            registerArray18 <= registerArray[17];
+            registerArray19 <= registerArray[18];
+            registerArray20 <= registerArray[19];
+            registerArray21 <= registerArray[20];
+            registerArray22 <= registerArray[21];
+            registerArray23 <= registerArray[22];
+            registerArray24 <= registerArray[23];
+            registerArray25 <= registerArray[24];
+            registerArray26 <= registerArray[25];
+            registerArray27 <= registerArray[26];
+            registerArray28 <= registerArray[27];
+            registerArray29 <= registerArray[28];
+            registerArray30 <= registerArray[29];
+            registerArray31 <= registerArray[30];
+            registerArray32 <= registerArray[31];
         end
 
     // Checks if values are different from 0.
     always @(posedge clk)
         begin
+
             if (reset)
                 begin
                     registerArray[0] <= 32'b0;
@@ -187,6 +223,40 @@ module RegisterMemory(
 
             outRS1 <= registerArray[rs1];
             outRS2 <= registerArray[rs2];
+
+            registerArray1 <= registerArray[0];
+            registerArray2 <= registerArray[1];
+            registerArray3 <= registerArray[2];
+            registerArray4 <= registerArray[3];
+            registerArray5 <= registerArray[4];
+            registerArray6 <= registerArray[5];
+            registerArray7 <= registerArray[6];
+            registerArray8 <= registerArray[7];
+            registerArray9 <= registerArray[8];
+            registerArray10 <= registerArray[9];
+            registerArray11 <= registerArray[10];
+            registerArray12 <= registerArray[11];
+            registerArray13 <= registerArray[12];
+            registerArray14 <= registerArray[13];
+            registerArray15 <= registerArray[14];
+            registerArray16 <= registerArray[15];
+            registerArray17 <= registerArray[16];
+            registerArray18 <= registerArray[17];
+            registerArray19 <= registerArray[18];
+            registerArray20 <= registerArray[19];
+            registerArray21 <= registerArray[20];
+            registerArray22 <= registerArray[21];
+            registerArray23 <= registerArray[22];
+            registerArray24 <= registerArray[23];
+            registerArray25 <= registerArray[24];
+            registerArray26 <= registerArray[25];
+            registerArray27 <= registerArray[26];
+            registerArray28 <= registerArray[27];
+            registerArray29 <= registerArray[28];
+            registerArray30 <= registerArray[29];
+            registerArray31 <= registerArray[30];
+            registerArray32 <= registerArray[31];
+
         end
 
 endmodule
