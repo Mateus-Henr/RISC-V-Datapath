@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: Controller.v
+// File Name: Controller.sv
 // Type: module
 // Department: Ciência da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique

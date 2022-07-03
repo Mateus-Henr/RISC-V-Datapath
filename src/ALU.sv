@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// ile Name: ALU.v
+// ile Name: ALU.sv
 // Type: module
 // Department: Ciência da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique

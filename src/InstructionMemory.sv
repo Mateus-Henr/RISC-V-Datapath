@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: InstructionMemory.v
+// File Name: InstructionMemory.sv
 // Type: module
 // Department: Ciencias da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique

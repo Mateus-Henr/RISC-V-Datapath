@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: PCAdderShift.v
+// File Name: PCAdder.sv
 // Type: module
 // Department: Ciencias da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique
@@ -10,25 +10,22 @@
 // 0.1     01/07/2022      Archive creation
 // 0.2     02/07/2022      Version with code
 //-------------------------------------------------------
-// Keywords:   PC, adder, shift
+// Keywords:   PC, adder
 //-------------------------------------------------------
-// Purpose:    Receives the PC and sums the PC and the immediate
+// Purpose:    Receives the PC and returns the next instruction
 
-module PCAddeShift(
-    PCAddShift,
-    PC,
-    immediate
+module PCAdder(
+    outPCAdder,
+    PC
 );
 
-    output reg[31:0] PCAddShift;    // PC adds and shift to the and multiplexer
+    output reg[31:0] outPCAdder;    // PC adder +4 to the "and" multiplexer
 
-    input[31:0] PC;                 // PC from the PC module
-    input[31:0] immediate;          // Immediate from the immediate generator
+    input[31:0] PC;                 // PC input from the PC module
 
-    //add the immediate to the PC
     always @(PC)
         begin
-            PCAddShift <= PC+immediate;
+            outPCAdder <= PC+4;
         end
 
 endmodule

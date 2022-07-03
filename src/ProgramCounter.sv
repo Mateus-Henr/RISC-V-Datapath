@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: MUX32_2_1.v
+// File Name: ProgramCounter.sv
 // Type: module
 // Department: Ciencias da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique
@@ -10,33 +10,33 @@
 // 0.1     01/07/2022      Archive creation
 // 0.2     02/07/2022      Version with code
 //-------------------------------------------------------
-// Keywords:   multiplexers
+// Keywords:   counter, clock, count
 //-------------------------------------------------------
-// Purpose:    Multiplexer
+// Purpose:    Counter
 
-module MUX_32_2_1(
-    out,
-    input1,
-    input2,
-    selector
+module ProgramCounter(
+    outPCNext,
+    PCNext,
+    reset,
+    clock
 );
 
-    output reg[31:0] out;   // Output to the register memory / ALU
+    output reg[31:0] outPCNext; // PC next to the instruction memory
 
-    input[31:0] input1;     // Input from the ALU / output register 2
-    input[31:0] input2;     // Input from the Readed data in data memory / Immediate genaretor
-    input selector;         // Input from the controler memory toregister / ALU Src
+    input[31:0] PCNext;         // PC next from the and multplexer
+    input reset;                // Reset signal from datapath
+    input clock;                // CLock from the datapath
 
-    //choose the value for the ALU / value to write in the register
-    always @(input1, input2, selector)
+    // Check if the PC needs to reset or reads the next pc
+    always @(posedge clock)
         begin
-            if (selector)
+            if (reset) // If reset signal is activated, we set the PC back to 0.
                 begin
-                    out <= input2;
+                    outPCNext <= 32'b0;
                 end
             else
                 begin
-                    out <= input1;
+                    outPCNext <= PCNext;
                 end
         end
 

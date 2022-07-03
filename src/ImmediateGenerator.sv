@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: ImmediateGenerator.v
+// File Name: ImmediateGenerator.sv
 // Type: module
 // Department: Ciencias da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique

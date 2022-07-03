@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: DataMemory.v
+// File Name: DataMemory.sv
 // Type: module
 // Department: Ciencias da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique

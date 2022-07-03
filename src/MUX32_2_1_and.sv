@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: MUX32_2_1_and.v
+// File Name: MUX32_2_1_and.sv
 // Type: module
 // Department: Ciencias da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique
