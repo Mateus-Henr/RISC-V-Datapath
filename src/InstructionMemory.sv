@@ -30,9 +30,9 @@ module InstructionMemory(
 
     // start the codelines
     initial begin
-        instructionArray[0] <= 32'b0;
-        instructionArray[1] <= 32'b0;
-        instructionArray[2] <= 32'b0;
+        instructionArray[0] <= 32'b00000000000100001000000010110011;
+        instructionArray[1] <= 32'b00000000000100001000000010110011;
+        instructionArray[2] <= 32'b00000000000100001000000010110011;
         instructionArray[3] <= 32'b0;
         instructionArray[4] <= 32'b0;
         instructionArray[5] <= 32'b0;
