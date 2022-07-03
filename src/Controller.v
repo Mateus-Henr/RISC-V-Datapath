@@ -26,16 +26,15 @@ module Controller(
     opcode
 );
 
-    output branch;              // Branch signal to the And multiplexer
-    output regWrite;            // Register write signal to the register memory
-    output memoryToRegister;    // Memory to register signal to the multplexer
-    output ALUSrc;              // ALU Src signal to the mutplexer
-    output memoryRead;          // read Memory signal to the Datamemory
-    output memoryWrite;         // write Memory signal to the Datamemory
+    output reg branch;              // Branch signal to the And multiplexer
+    output reg regWrite;            // Register write signal to the register memory
+    output reg memoryToRegister;    // Memory to register signal to the multplexer
+    output reg ALUSrc;              // ALU Src signal to the mutplexer
+    output reg memoryRead;          // read Memory signal to the Datamemory
+    output reg memoryWrite;         // write Memory signal to the Datamemory
     output reg[1:0] ALUOp;      // ALU operation to the ALU Controller
-    //  output reg RegDst;
 
-    input opcode;               // Opcode from the instruction
+    input[6:0] opcode;               // Opcode from the instruction
 
     // logic of the Controller, used to generate signals to datapath modules
     always @(opcode)
@@ -84,4 +83,4 @@ module Controller(
             endcase
         end
 
-endmodule : Controller
+endmodule

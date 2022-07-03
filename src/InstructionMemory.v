@@ -63,7 +63,17 @@ module InstructionMemory(
         instructionArray[30] <= 32'b0;
         instructionArray[31] <= 32'b0;
     end
-
+/*
+            #20 instruction = 00000000000000001000000100110011;
+            #20 instruction = 00000000001000001000000010110011;
+            #20 instruction = 00000000001000001000000010110011;
+            #20 instruction = 01000000001000001000000010110011;
+            #20 instruction = 01000000001000001000000010110011;
+            #20 instruction = 00000000000100001000000010110011;
+            #20 instruction = 00000000000000001010000000100011;
+            #20 reset = 1'b1;
+            #20 instruction = 00000000000000001010000000100011;
+*/
     //read the codeline, check if reset and reset
     always @(PC)
         begin
@@ -102,7 +112,7 @@ module InstructionMemory(
                     instructionArray[30] <= 32'b0;
                     instructionArray[31] <= 32'b0;
                 end
-            out <= instructArray[PC/4];
+            out <= instructionArray[PC/4];
         end
 
-endmodule : InstructionMemory
+endmodule

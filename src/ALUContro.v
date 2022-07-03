@@ -6,7 +6,7 @@
 // Author's Email: joao.andrade1@ufv.br, mateus.h.figueredo@ufv.br, vitor.lacerda@ufv.br
 //-------------------------------------------------------
 // Release history
-// Version Date            Description
+// Version Date            Description 
 // 0.1     01/07/2022      Archive creation
 // 0.2     02/07/2022      Version with code
 //-------------------------------------------------------
@@ -20,7 +20,7 @@ module ALUControl(
     funct3,
     ALUOp
 );
-    output[4:0] outALUControl;  // Output to control the ALU
+    output reg[3:0] outALUControl;  // Output to control the ALU
 
     input[6:0] funct7;          // Function 7 of the Instruction
     input[3:0] funct3;          // Function 3 of the Instruction
@@ -110,4 +110,4 @@ module ALUControl(
 
         endcase
 
-endmodule : ALUControl
+endmodule

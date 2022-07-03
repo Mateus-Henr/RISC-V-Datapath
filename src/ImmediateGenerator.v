@@ -23,14 +23,10 @@ module ImmediateGenerator(
 
     input[31:0] immediate;          // Immediate with 16 bits
 
-    wire[31:0] opcode;              // Instruction's opcode 5 bits
-    wire[2:0] funct3;               // Instruction's funct3 3 bits
+    wire[31:0] opcode = immediate[6:0];              // Instruction's opcode 5 bits
+    wire[2:0] funct3 = immediate[15:12];               // Instruction's funct3 3 bits
 
     reg[31:0] immediateOut;         // Register for the immediate
-
-    assign outImmediate = immediateOut;
-    assign opcode = immediate[6:0];
-    assign funct3 = immediate[14:12];
 
     // Amplify Immediate extendint with zeros for positive numbers and one for the negative numbers
     always @(immediate)
@@ -52,4 +48,4 @@ module ImmediateGenerator(
             endcase
         end
 
-endmodule : ImmediateGenerator
+endmodule

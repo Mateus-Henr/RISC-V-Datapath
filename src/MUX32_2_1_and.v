@@ -14,11 +14,12 @@
 //-------------------------------------------------------
 // Purpose:    Multiplexer with "and" gateway
 
-module mux_2to1_32bit(
+module MUX32_2_1_and(
     PCNext,
     addPC,
     addPCShift,
-    zero, branch
+    zero,
+    branch
 );
 
     output reg[31:0] PCNext;    // Next progam to the PC module
@@ -31,7 +32,7 @@ module mux_2to1_32bit(
     reg selector;               // Selector to select the adder
 
     // Makes a "and" with "zero" signal and branch to chouse the adder
-    always @(addPC, addPCShift, inC)
+    always @(addPC, addPCShift)
         begin
             selector <= zero & branch;
 

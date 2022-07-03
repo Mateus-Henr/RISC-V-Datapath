@@ -33,7 +33,7 @@ module DataMemory(
     input memWrite;             // Memory write signal from the Controller
     input memRead;              // Memory read signal from the Controller
 
-    reg[31:0] dataArray[34:0];  // Data memory
+    reg[31:0] dataArray[31:0];  // Data memory
 
     // reset all the memory to the default
     always @(reset)
@@ -85,8 +85,8 @@ module DataMemory(
 
             else if (memRead)
                 begin
-                    memRead <= dataArray[address];
+                    readData <= dataArray[address];
                 end
         end
 
-endmodule: DataMemory
+endmodule

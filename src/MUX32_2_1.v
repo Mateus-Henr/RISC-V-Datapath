@@ -14,7 +14,7 @@
 //-------------------------------------------------------
 // Purpose:    Multiplexer
 
-module mux_2to1_32bit(
+module MUX_32_2_1(
     out,
     input1,
     input2,

@@ -19,94 +19,62 @@
 
 module DatapathTB();
 
-    reg[31:0] instruction;
     reg[31:0] registerArray[31:0];
-    reg ALUSrc, memtoReg, regWrite, memRead, memWrite, branch;
-    reg[1:0] ALUOp;
+    reg clock, reset;
 
-    reg clock, start;
-
-    wire done;
-
-    Datapath Datapath(gt,
-        lt,
-        eq,
-        dA,
-        ldB,
-        sell,
-        se12,
-        sel_in,
-        data_in,
-        instruction[24:31],
+    Datapath datapath(
+        registerArray,
         clock,
-        registerArray);
-
-    Controller controller(ALUOp,
-        branch,
-        regWrite,
-        memoryToRegister,
-        ALUSrc,
-        memRead,
-        memWrite,
-        instruction[24:31]);
+        reset
+    );
 
     initial
         begin
             clock = 1'b0;
+            reset = 1'b0;
             #1000 $finish;
         end
 
     always @(*)
         begin
-            clock = ~clock;
+            #10 clock = ~clock;
         end
 
     initial
         begin
-            #10 instruction = 00000000000000001000000100110011;
-            #10 instruction = 00000000001000001000000010110011;
-            #10 instruction = 00000000001000001000000010110011;
-            #10 instruction = 01000000001000001000000010110011;
-            #10 instruction = 01000000001000001000000010110011;
-            #10 instruction = 00000000000100001000000010110011;
-            #10 instruction = 00000000000000001010000000100011;
-        end
-
-    initial
-        begin
-            $monitor($time, "Register       Decimal       Binary\n
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b
-                            %02d               %02d                   %b",
+            $monitor($time, "Register       Decimal       Binary\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n \
+                            %02d               %02d                   %b\n",
                 registerArray[0],
                 registerArray[1],
                 registerArray[2],
@@ -141,7 +109,7 @@ module DatapathTB();
                 registerArray[31]);
 
             $dumpfile("datafile.vcd");
-            $dumpvark(0, DatapathTB);
+            $dumpvark(0, datapath);
         end
 
-endmodule: DatapathTB
+endmodule

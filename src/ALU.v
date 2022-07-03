@@ -22,23 +22,22 @@ module ALU(
     input2
 );
 
-    output zero;                // Zero signal to the and multiplexer
+    output reg zero;                // Zero signal to the and multiplexer
     output reg[31:0] ALUOut;    // ALU output to the multplexer
 
     input[31:0] input1;         // Output register1 from registers memory
     input[31:0] input2;         // Extended immediate from Immadiate Genarator
     input[3:0] ALUControl;      // Output ALU control from ALU controller
 
-    // Return zero signal based in the ALU output
-    always @(*)
-        begin
-
-        end
+    // // Return zero signal based in the ALU output
+    // always @(*)
+    //     begin
+    //
+    //     end
 
     // Do the logical operations based in the ALU controller signal
     always @(*)
         begin
-
             if (!ALUOut)
                 begin
                     zero <= 1;
@@ -72,5 +71,5 @@ module ALU(
                 default: sOut = input1+input2;
             endcase
         end
-    endfunction : sOut
-endmodule : ALU
+    endfunction
+endmodule

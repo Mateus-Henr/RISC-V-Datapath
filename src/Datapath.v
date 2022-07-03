@@ -18,6 +18,7 @@
 `include "ALU.v"
 `include "ALUControl.v"
 `include "Controller.v"
+`include "DataMemory.v"
 `include "ImmediateGenerator.v"
 `include "InstructionMemory.v"
 `include "MUX32_2_1.v"
@@ -28,25 +29,26 @@
 `include "RegisterMemory.v"
 
 module Datapath(
-    wireisterArray,
+    registerArray,
     clock,
     reset
 );
 
-    output wire[31:0] wireisterArray[31:0];
+    output reg[31:0] registerArray[31:0];
 
-    input wirereset, clock;
+    input reset, clock;
 
     // Wires
     wire[31:0] PC, writeData, data1, data2, soma, PCNext, instruction, ALUout, immediate, auxiliarData, PCshift, readData;
-    wire branch, memRead, memtoReg, memWrite, ALUSrc, zero, ANDBranch; // Control
+    wire branch, memRead, memtoReg, memWrite, ALUSrc, zero, regWrite; // Control
     wire[1:0] ALUOp; // Control
+    wire[3:0] ALUCrt;
 
     // Modules
-    ProgramCounter PC(
+    ProgramCounter programCounter(
         .outPCNext(PCNext),
         .PCNext(PC),
-        .reset(wirereset),
+        .reset(reset),
         .clock(clock)
     );
 
@@ -57,87 +59,92 @@ module Datapath(
 
     InstructionMemory instructionMem(
         .out(instruction),
-        .PC(PC),
-        .reset(wirereset)
+        .PC(PCNext),
+        .reset(reset)
     );
 
     Controller control(
-        .ALUOp(),
-        .branch(),
-        .regWrite(),
-        .memoryToRegister(),
-        .ALUSrc(),
-        .memoryRead(),
-        .memoryWrite(),
-        .opcode()
-    );
-
-    ALU alu(
-        .ALUOut(),
-        .zero(),
-        .ALUControl(),
-        .input1(),
-        .input2()
-    );
-
-
-    ALUControl aluCrt(
-        .outALUControl(),
-        .funct7(),
-        .funct3(),
-        .ALUOp()
-    );
-
-
-
-    DataMemory dataMem(
-        .readData(),
-        .address(),
-        .writeData(),
-        .clock(),
-        .memWrite(),
-        .memRead(),
-        .reset()
+        .ALUOp(ALUOp),
+        .branch(branch),
+        .regWrite(regWrite),
+        .memoryToRegister(memtoReg),
+        .ALUSrc(ALUSrc),
+        .memoryRead(memRead),
+        .memoryWrite(memWrite),
+        .opcode(instruction[6:0])
     );
 
     ImmediateGenerator immGen(
-        .outImmediate(),
-        .immediate()
+        .outImmediate(immediate),
+        .immediate(instruction)
     );
 
-
-
-    mux_2to1_32bit mux32(
-        .out(),
-        .input1(),
-        .input2(),
-        .selector()
-    );
-
-    mux_2to1_32bit mux32And(
-        .PCNext(),
-        .addPC(),
-        .addPCShift(),
-        .zero(),
-        .branch()
-    );
-
-    PCAddeShift pcAdderShift(
-        .PCAddShift(),
-        .PC(),
-        .immediate()
+    ALUControl aluCrt(
+        .outALUControl(ALUCrt),
+        .funct7(instruction[31:25]),
+        .funct3(instruction[15:12]),
+        .ALUOp(ALUOp)
     );
 
     RegisterMemory registerMem(
-        .outRS1(),
-        .outRS2(),
-        .registerArray(),
-        .rs1(),
-        .rs2(),
-        .rsWrite(),
-        .dataWrite(),
-        .rWrite(),
-        .clk()
+        .outRS1(data1),
+        .outRS2(data2),
+        .registerArray(registerArray),
+        .rs1(instruction[19:15]),
+        .rs2(instruction[24:20]),
+        .rsWrite(instruction[11:7]),
+        .dataWrite(writeData),
+        .rWrite(regWrite),
+        .clk(clock),
+        .reset(reset)
     );
 
-endmodule : Controller
+    MUX_32_2_1 mux1(
+        .out(auxiliarData),
+        .input1(data2),
+        .input2(immediate),
+        .selector(ALUSrc)
+    );
+
+    ALU alu(
+        .ALUOut(ALUout),
+        .zero(zero),
+        .ALUControl(ALUCrt),
+        .input1(data1),
+        .input2(auxiliarData)
+    );
+
+    PCAddeShift pcAdderShift(
+        .PCAddShift(PCshift),
+        .PC(PCNext),
+        .immediate(immediate)
+    );
+
+    MUX32_2_1_and mux32And(
+        .PCNext(PCNext),
+        .addPC(PC),
+        .addPCShift(PCshift),
+        .zero(zero),
+        .branch(branch)
+    );
+
+    DataMemory dataMem(
+        .readData(readData),
+        .address(ALUout),
+        .writeData(writeData),
+        .clock(clock),
+        .memWrite(memRead),
+        .memRead(memWrite),
+        .reset(reset)
+    );
+
+    MUX_32_2_1 mux2(
+        .out(writeData),
+        .input1(readData),
+        .input2(ALUout),
+        .selector(memtoReg)
+    );
+
+
+
+endmodule
