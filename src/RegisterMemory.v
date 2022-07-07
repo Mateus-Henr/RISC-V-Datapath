@@ -179,16 +179,14 @@ module RegisterMemory(
                     registerArray[30] <= 32'b0;
                     registerArray[31] <= 32'b0;
                 end
-            else if (rWrite)
-                begin
-                    if (rsWrite)
-                        begin
-                            registerArray[rsWrite] <= dataWrite;
-                        end
-                end
 
             outRS1 <= registerArray[rs1];
             outRS2 <= registerArray[rs2];
+
+            if (rWrite)
+                begin
+                    registerArray[rsWrite] <= dataWrite;
+                end
 
             registerArray1 <= registerArray[0];
             registerArray2 <= registerArray[1];
@@ -224,5 +222,4 @@ module RegisterMemory(
             registerArray32 <= registerArray[31];
 
         end
-
 endmodule

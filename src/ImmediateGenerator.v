@@ -27,7 +27,7 @@ module ImmediateGenerator(
     wire[2:0] funct3 = immediate[15:12];               // Instruction's funct3 3 bits
 
     // Amplify Immediate extendint with zeros for positive numbers and one for the negative numbers
-    always @(immediate)
+    always @(*)
         begin
             case (opcode)
                 7'b0100011:
