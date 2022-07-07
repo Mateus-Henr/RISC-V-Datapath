@@ -22,22 +22,27 @@ module ALU(
     input2
 );
 
-    output reg zero;                // Zero signal to the and multiplexer
     output reg[31:0] ALUOut;    // ALU output to the multplexer
+    output reg zero;            // Zero signal to the and multiplexer
 
     input[31:0] input1;         // Output register1 from registers memory
     input[31:0] input2;         // Extended immediate from Immadiate Genarator
     input[3:0] ALUControl;      // Output ALU control from ALU controller
 
-    // // Return zero signal based in the ALU output
-    // always @(*)
-    //     begin
-    //
-    //     end
-
     // Do the logical operations based in the ALU controller signal
     always @(*)
         begin
+
+            case (ALUControl)
+                4'b0000: ALUOut <= input1 & input2;         // And
+                4'b0001: ALUOut <= input1 | input2;         // Or
+                4'b0010: ALUOut <= input1+input2;           // Sum
+                4'b0110: ALUOut <= input1-input2;           // Sub
+                4'b0111: ALUOut <= (input1 < input2);
+                4'b1100: ALUOut <= ~(input1 | input2);
+                default: ALUOut <= 32'b0;                   // Default
+            endcase
+
             if (!ALUOut)
                 begin
                     zero <= 1;
@@ -47,23 +52,18 @@ module ALU(
                     zero <= 0;
                 end
 
-            case (ALUControl)
-                4'b0000: ALUOut <= input1 & input2;  // And
-                4'b0001: ALUOut <= input1 | input2;  // Or
-                4'b0010: ALUOut <= input1+input2;    // Sum
-                4'b0110: ALUOut <= input1-input2;    // Sub
-                4'b0111: ALUOut <= (input1 < input2) ? 1:0;
-                4'b1100: ALUOut <= ~(input1 | input2);
-                default: ALUOut <= 0;    // Default
-            endcase
         end
+
 
     //Do operations with signed numbers
     function [31:0] sOut;
+
         input[31:0] input1, input2;
+
         begin
             case (input2[31])
-                1'b1: begin
+                1'b1:
+                begin
                     input2 = ~input2;
                     input2 = input2+1'b1;
                     sOut = input1+input2;
@@ -71,5 +71,7 @@ module ALU(
                 default: sOut = input1+input2;
             endcase
         end
+
     endfunction
+
 endmodule

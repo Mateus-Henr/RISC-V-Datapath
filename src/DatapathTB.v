@@ -15,7 +15,6 @@
 // Purpose:    Used to perform tests
 
 `timescale 1ns/1ps
-`include "Datapath.v"
 
 module DatapathTB();
 
@@ -51,6 +50,7 @@ module DatapathTB();
     wire[31:0] registerArray30;
     wire[31:0] registerArray31;
     wire[31:0] registerArray32;
+    wire[31:0] line;
 
     reg clock, reset;
 
@@ -87,6 +87,7 @@ module DatapathTB();
         registerArray30,
         registerArray31,
         registerArray32,
+        line,
         clock,
         reset
     );
@@ -105,40 +106,40 @@ module DatapathTB();
 
     initial
         begin
-            $monitor("\t\t\t Register         Decimal               Binary\n \
-                        0                %03d                   %b\n \
-                        1                %03d                   %b\n \
-                        2                %03d                   %b\n \
-                        3                %03d                   %b\n \
-                        4                %03d                   %b\n \
-                        5                %03d                   %b\n \
-                        6                %03d                   %b\n \
-                        7                %03d                   %b\n \
-                        8                %03d                   %b\n \
-                        9                %03d                   %b\n \
-                        10               %03d                   %b\n \
-                        11               %03d                   %b\n \
-                        12               %03d                   %b\n \
-                        13               %03d                   %b\n \
-                        14               %03d                   %b\n \
-                        15               %03d                   %b\n \
-                        16               %03d                   %b\n \
-                        17               %03d                   %b\n \
-                        18               %03d                   %b\n \
-                        19               %03d                   %b\n \
-                        20               %03d                   %b\n \
-                        21               %03d                   %b\n \
-                        22               %03d                   %b\n \
-                        23               %03d                   %b\n \
-                        24               %03d                   %b\n \
-                        25               %03d                   %b\n \
-                        26               %03d                   %b\n \
-                        27               %03d                   %b\n \
-                        28               %03d                   %b\n \
-                        29               %03d                   %b\n \
-                        30               %03d                   %b\n \
-                        31               %03d                   %b\n \
-                        clock = %d\n",
+            $monitor({"Register         Decimal               Binary\n",
+                        "0                %03d                   %b\n",
+                        "1                %03d                   %b\n",
+                        "2                %03d                   %b\n",
+                        "3                %03d                   %b\n",
+                        "4                %03d                   %b\n",
+                        "5                %03d                   %b\n",
+                        "6                %03d                   %b\n",
+                        "7                %03d                   %b\n",
+                        "8                %03d                   %b\n",
+                        "9                %03d                   %b\n",
+                        "10               %03d                   %b\n",
+                        "11               %03d                   %b\n",
+                        "12               %03d                   %b\n",
+                        "13               %03d                   %b\n",
+                        "14               %03d                   %b\n",
+                        "15               %03d                   %b\n",
+                        "16               %03d                   %b\n",
+                        "17               %03d                   %b\n",
+                        "18               %03d                   %b\n",
+                        "19               %03d                   %b\n",
+                        "20               %03d                   %b\n",
+                        "21               %03d                   %b\n",
+                        "22               %03d                   %b\n",
+                        "23               %03d                   %b\n",
+                        "24               %03d                   %b\n",
+                        "25               %03d                   %b\n",
+                        "26               %03d                   %b\n",
+                        "27               %03d                   %b\n",
+                        "28               %03d                   %b\n",
+                        "29               %03d                   %b\n",
+                        "30               %03d                   %b\n",
+                        "31               %03d                   %b\n",
+                        "clock = %d\nLINE = %d\n"},
                 registerArray1, registerArray1,
                 registerArray2, registerArray2,
                 registerArray3, registerArray3,
@@ -170,9 +171,10 @@ module DatapathTB();
                 registerArray29, registerArray29,
                 registerArray30, registerArray30,
                 registerArray31, registerArray31,
-                registerArray32, registerArray32, clock);
+                registerArray32, registerArray32,
+                clock, line);
 
-            $dumpfile("datafile.vcd");
+            $dumpfile("datapath.vcd");
             $dumpvars(0, DatapathTB);
         end
 

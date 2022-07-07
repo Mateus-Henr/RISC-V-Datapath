@@ -79,7 +79,7 @@ module InstructionMemory(
         begin
             if (reset)
                 begin
-                    instructionArray[0] <= 32'b0;
+                    instructionArray[0] <= 32'b00000000000100001000000010110011;
                     instructionArray[1] <= 32'b0;
                     instructionArray[2] <= 32'b0;
                     instructionArray[3] <= 32'b0;
@@ -112,7 +112,7 @@ module InstructionMemory(
                     instructionArray[30] <= 32'b0;
                     instructionArray[31] <= 32'b0;
                 end
-            out <= instructionArray[PC/4];
-        end
 
+            out <= instructionArray[PC >> 2];
+        end
 endmodule

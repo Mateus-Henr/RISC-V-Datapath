@@ -26,25 +26,23 @@ module ImmediateGenerator(
     wire[31:0] opcode = immediate[6:0];              // Instruction's opcode 5 bits
     wire[2:0] funct3 = immediate[15:12];               // Instruction's funct3 3 bits
 
-    reg[31:0] immediateOut;         // Register for the immediate
-
     // Amplify Immediate extendint with zeros for positive numbers and one for the negative numbers
     always @(immediate)
         begin
             case (opcode)
                 7'b0100011:
                     begin
-                        immediateOut <= {{21{immediate[31]}}, immediate[30:25], immediate[11:8], immediate[7]};            // SD Stype
+                        outImmediate <= {{21{immediate[31]}}, immediate[30:25], immediate[11:8], immediate[7]};            // SD Stype
                     end
                 7'b0000011:
                     begin
-                        immediateOut <= {{21{immediate[31]}}, immediate[30:25], immediate[24:21], immediate[20]};          // LD Itype
+                        outImmediate <= {{21{immediate[31]}}, immediate[30:25], immediate[24:21], immediate[20]};          // LD Itype
                     end
                 7'b1100011:
                     begin
-                        immediateOut <= {{20{immediate[31]}}, immediate[7], immediate[30:25], immediate[11:8], {1{1'b0}}}; //branch
+                        outImmediate <= {{20{immediate[31]}}, immediate[7], immediate[30:25], immediate[11:8], {1{1'b0}}}; //branch
                     end
-                default: immediateOut <= 32'bx;
+                default: outImmediate <= 32'bx;
             endcase
         end
 

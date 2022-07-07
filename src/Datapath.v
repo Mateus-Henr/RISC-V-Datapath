@@ -15,18 +15,6 @@
 // Purpose:    Datapath
 
 // Includes
-`include "ALU.v"
-`include "ALUControl.v"
-`include "Controller.v"
-`include "DataMemory.v"
-`include "ImmediateGenerator.v"
-`include "InstructionMemory.v"
-`include "MUX32_2_1.v"
-`include "MUX32_2_1_and.v"
-`include "PCAdder.v"
-`include "PCAdderShift.v"
-`include "ProgramCounter.v"
-`include "RegisterMemory.v"
 
 module Datapath(
     registerArray1,
@@ -61,11 +49,12 @@ module Datapath(
     registerArray30,
     registerArray31,
     registerArray32,
+    instruction,
     clock,
     reset
 );
 
-    output wire [31:0] registerArray1;
+    output wire[31:0] registerArray1;
     output wire[31:0] registerArray2;
     output wire[31:0] registerArray3;
     output wire[31:0] registerArray4;
@@ -105,6 +94,9 @@ module Datapath(
     wire branch, memRead, memtoReg, memWrite, ALUSrc, zero, regWrite; // Control
     wire[1:0] ALUOp; // Control
     wire[3:0] ALUCrt;
+    wire[31:0] PC;
+
+    assign PC = 32'b0;
 
     // Modules
     ProgramCounter programCounter(
@@ -237,7 +229,5 @@ module Datapath(
         .input2(ALUout),
         .selector(memtoReg)
     );
-
-
 
 endmodule

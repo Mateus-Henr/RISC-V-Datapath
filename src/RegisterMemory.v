@@ -108,8 +108,8 @@ module RegisterMemory(
     initial
         begin
             registerArray[0] <= 32'b0;
-            registerArray[1] <= 32'b1;          // 1 in binary
-            registerArray[2] <= 32'b0;
+            registerArray[1] <= 32'b111;          // 1 in binary
+            registerArray[2] <= 32'b111;
             registerArray[3] <= 32'b0;
             registerArray[4] <= 32'b0;
             registerArray[5] <= 32'b0;
@@ -147,8 +147,8 @@ module RegisterMemory(
             if (reset)
                 begin
                     registerArray[0] <= 32'b0;
-                    registerArray[1] <= 32'b1;
-                    registerArray[2] <= 32'b0;
+                    registerArray[1] <= 32'b111;
+                    registerArray[2] <= 32'b111;
                     registerArray[3] <= 32'b0;
                     registerArray[4] <= 32'b0;
                     registerArray[5] <= 32'b0;
