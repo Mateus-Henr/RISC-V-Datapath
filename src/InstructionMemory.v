@@ -17,13 +17,15 @@
 module InstructionMemory(
     out,
     PC,
-    reset
+    reset,
+    clock,
 );
 
     output reg[31:0] out;               // Instruction to the Datapath
 
     input[31:0] PC;                     // Program counter from the PC module
     input reset;                        // Reset signal from the datapath
+    input clock;                        // Clock from the datapath
 
     reg[31:0] instructionArray[31:0];   // Instruction memory
 
@@ -33,11 +35,11 @@ module InstructionMemory(
         instructionArray[0] <= 32'b00000000000100001000000010110011;
         instructionArray[1] <= 32'b00000000000100001000000010110011;
         instructionArray[2] <= 32'b00000000000100001000000010110011;
-        instructionArray[3] <= 32'b0;
-        instructionArray[4] <= 32'b0;
-        instructionArray[5] <= 32'b0;
-        instructionArray[6] <= 32'b0;
-        instructionArray[7] <= 32'b0;
+        instructionArray[3] <= 32'b00000000000100001000000010110011;
+        instructionArray[4] <= 32'b00000000000100001000000010110011;
+        instructionArray[5] <= 32'b00000000000100001000000010110011;
+        instructionArray[6] <= 32'b00000000000100001000000010110011;
+        instructionArray[7] <= 32'b00000000000100001000000010110011;
         instructionArray[8] <= 32'b0;
         instructionArray[9] <= 32'b0;
         instructionArray[10] <= 32'b0;
@@ -63,19 +65,9 @@ module InstructionMemory(
         instructionArray[30] <= 32'b0;
         instructionArray[31] <= 32'b0;
     end
-/*
-            #20 instruction = 00000000000000001000000100110011;
-            #20 instruction = 00000000001000001000000010110011;
-            #20 instruction = 00000000001000001000000010110011;
-            #20 instruction = 01000000001000001000000010110011;
-            #20 instruction = 01000000001000001000000010110011;
-            #20 instruction = 00000000000100001000000010110011;
-            #20 instruction = 00000000000000001010000000100011;
-            #20 reset = 1'b1;
-            #20 instruction = 00000000000000001010000000100011;
-*/
+
     //read the codeline, check if reset and reset
-    always @(PC)
+    always @(posedge clock)
         begin
             if (reset)
                 begin

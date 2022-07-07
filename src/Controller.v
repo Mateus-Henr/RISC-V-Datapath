@@ -37,7 +37,7 @@ module Controller(
     input[6:0] opcode;               // Opcode from the instruction
 
     // logic of the Controller, used to generate signals to datapath modules
-    always @(opcode)
+    always @(*)
         begin
             case (opcode)
                 7'b0110011: // R-format

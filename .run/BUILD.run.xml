@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="BUILD" type="SystemVerilogIverilogId" factoryName="IVerilog">
+    <option name="COMMAND_FILE_PATH" value="" />
+    <option name="TOP_MODULE_NAME" value="DatapathTB" />
+    <option name="SIMULATOR_PATH" value="F:\iverilog\bin\iverilog.exe" />
+    <option name="SIMULATOR_OPTIONS" value="" />
+    <option name="BUILD_OPTIONS" value="" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/build" />
+    <method v="2" />
+  </configuration>
+</component>

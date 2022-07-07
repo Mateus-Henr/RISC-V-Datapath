@@ -32,7 +32,7 @@ module ProgramCounter(
         begin
             if (reset) // If reset signal is activated, we set the PC back to 0.
                 begin
-                    outPCNext <= 32'b0;
+                    outPCNext <= 32'b1;
                 end
             else
                 begin

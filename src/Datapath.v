@@ -86,11 +86,14 @@ module Datapath(
     output wire[31:0] registerArray30;
     output wire[31:0] registerArray31;
     output wire[31:0] registerArray32;
+    output wire[31:0] instruction;
+    output wire[31:0] ALUrResp;
+    output wire[31:0] ALUoperator;
 
     input reset, clock;
 
     // Wires
-    wire[31:0] PC, writeData, data1, data2, soma, PCNext, instruction, ALUout, immediate, auxiliarData, PCshift, readData;
+    wire[31:0] PCpsadd, writeData, data1, data2, soma, PCNext, ALUout, immediate, auxiliarData, PCshift, readData, immediateSH;
     wire branch, memRead, memtoReg, memWrite, ALUSrc, zero, regWrite; // Control
     wire[1:0] ALUOp; // Control
     wire[3:0] ALUCrt;
@@ -107,14 +110,15 @@ module Datapath(
     );
 
     PCAdder pcAdd(
-        .outPCAdder(PC),
+        .outPCAdder(PCpsadd),
         .PC(PCNext)
     );
 
     InstructionMemory instructionMem(
         .out(instruction),
         .PC(PCNext),
-        .reset(reset)
+        .reset(reset),
+        .clock(clock)
     );
 
     Controller control(
@@ -136,14 +140,14 @@ module Datapath(
     ALUControl aluCrt(
         .outALUControl(ALUCrt),
         .funct7(instruction[31:25]),
-        .funct3(instruction[15:12]),
+        .funct3(instruction[14:12]),
         .ALUOp(ALUOp)
     );
 
     RegisterMemory registerMem(
         .outRS1(data1),
         .outRS2(data2),
-         .registerArray1(registerArray1),
+        .registerArray1(registerArray1),
         .registerArray2(registerArray2),
         .registerArray3(registerArray3),
         .registerArray4(registerArray4),
@@ -199,20 +203,25 @@ module Datapath(
         .input2(auxiliarData)
     );
 
-    PCAddeShift pcAdderShift(
-        .PCAddShift(PCshift),
-        .PC(PCNext),
+    Shifter sht(
+        .shiftImmediate(immediateSH),
         .immediate(immediate)
     );
 
+    PCAddeShift pcAdderShift(
+        .PCAddShift(PCshift),
+        .PC(PCNext),
+        .immediate(immediateSH)
+    );
+
     MUX32_2_1_and mux32And(
-        .PCNext(PCNext),
-        .addPC(PC),
+        .PCNext(PC),
+        .addPC(PCNext),
         .addPCShift(PCshift),
         .zero(zero),
         .branch(branch)
     );
-
+//----------------------------------
     DataMemory dataMem(
         .readData(readData),
         .address(ALUout),

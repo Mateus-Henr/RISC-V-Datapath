@@ -1,5 +1,5 @@
 //-------------------------------------------------------
-// File Name: PCAdderShift.sv
+// File Name: Shifter.v
 // Type: module
 // Department: Ciencias da computação - UFV-Florestal
 // Author: João Victor, Vitor Ribeiro, Mateus Henrique
@@ -10,25 +10,21 @@
 // 0.1     01/07/2022      Archive creation
 // 0.2     02/07/2022      Version with code
 //-------------------------------------------------------
-// Keywords:   PC, adder, shift
+// Keywords:   Shifter, shift, left
 //-------------------------------------------------------
-// Purpose:    Receives the PC and sums the PC and the immediate
+// Purpose:    Used to shift the Immediate
 
-module PCAddeShift(
-    PCAddShift,
-    PC,
-    immediate
+module Shifter (
+shiftImmediate,
+immediate
 );
+    output reg [31:0]shiftImmediate;   // Shifted imeddiate to the adder 32 bits
 
-    output reg[31:0] PCAddShift;    // PC adds and shift to the and multiplexer
+    input wire[31:0]immediate;            // Imeddiate from the Immeediate Generator 32 bits
 
-    input[31:0] PC;                 // PC from the PC module
-    input[31:0] immediate;          // Immediate from the immediate generator
-
-    //add the immediate to the PC
-    always @(*)
-        begin
-            PCAddShift <= PC+immediate;
-        end
-
+    // Shift the immediate
+    always @ (*)
+    begin
+        shiftImmediate <= (immediate << 2);
+    end
 endmodule

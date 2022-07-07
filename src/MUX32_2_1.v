@@ -28,7 +28,7 @@ module MUX_32_2_1(
     input selector;         // Input from the controler memory toregister / ALU Src
 
     //choose the value for the ALU / value to write in the register
-    always @(input1, input2, selector)
+    always @(*)
         begin
             if (selector)
                 begin
