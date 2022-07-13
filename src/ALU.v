@@ -32,7 +32,6 @@ module ALU(
     // Do the logical operations based in the ALU controller signal
     always @(*)
         begin
-
             case (ALUControl)
                 4'b0000: ALUOut <= input1 & input2;         // And
                 4'b0001: ALUOut <= input1 | input2;         // Or

@@ -23,9 +23,9 @@ module PCAdder(
 
     input[31:0] PC;                 // PC input from the PC module
 
-    always @(*)
+    always @(PC)
         begin
-            outPCAdder <=0;
+            outPCAdder <= 32'b0;
         end
 
 endmodule

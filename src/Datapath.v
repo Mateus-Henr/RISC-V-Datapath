@@ -17,79 +17,14 @@
 // Includes
 
 module Datapath(
-    registerArray1,
-    registerArray2,
-    registerArray3,
-    registerArray4,
-    registerArray5,
-    registerArray6,
-    registerArray7,
-    registerArray8,
-    registerArray9,
-    registerArray10,
-    registerArray11,
-    registerArray12,
-    registerArray13,
-    registerArray14,
-    registerArray15,
-    registerArray16,
-    registerArray17,
-    registerArray18,
-    registerArray19,
-    registerArray20,
-    registerArray21,
-    registerArray22,
-    registerArray23,
-    registerArray24,
-    registerArray25,
-    registerArray26,
-    registerArray27,
-    registerArray28,
-    registerArray29,
-    registerArray30,
-    registerArray31,
-    registerArray32,
     instruction,
     clock,
     reset
 );
 
-    output wire[31:0] registerArray1;
-    output wire[31:0] registerArray2;
-    output wire[31:0] registerArray3;
-    output wire[31:0] registerArray4;
-    output wire[31:0] registerArray5;
-    output wire[31:0] registerArray6;
-    output wire[31:0] registerArray7;
-    output wire[31:0] registerArray8;
-    output wire[31:0] registerArray9;
-    output wire[31:0] registerArray10;
-    output wire[31:0] registerArray11;
-    output wire[31:0] registerArray12;
-    output wire[31:0] registerArray13;
-    output wire[31:0] registerArray14;
-    output wire[31:0] registerArray15;
-    output wire[31:0] registerArray16;
-    output wire[31:0] registerArray17;
-    output wire[31:0] registerArray18;
-    output wire[31:0] registerArray19;
-    output wire[31:0] registerArray20;
-    output wire[31:0] registerArray21;
-    output wire[31:0] registerArray22;
-    output wire[31:0] registerArray23;
-    output wire[31:0] registerArray24;
-    output wire[31:0] registerArray25;
-    output wire[31:0] registerArray26;
-    output wire[31:0] registerArray27;
-    output wire[31:0] registerArray28;
-    output wire[31:0] registerArray29;
-    output wire[31:0] registerArray30;
-    output wire[31:0] registerArray31;
-    output wire[31:0] registerArray32;
     output wire[31:0] instruction;
     output wire[31:0] ALUrResp;
     output wire[31:0] ALUoperator;
-
     input reset, clock;
 
     // Wires
@@ -98,8 +33,6 @@ module Datapath(
     wire[1:0] ALUOp; // Control
     wire[3:0] ALUCrt;
     wire[31:0] PC;
-
-    assign PC = 32'b0;
 
     // Modules
     ProgramCounter programCounter(
@@ -147,38 +80,6 @@ module Datapath(
     RegisterMemory registerMem(
         .outRS1(data1),
         .outRS2(data2),
-        .registerArray1(registerArray1),
-        .registerArray2(registerArray2),
-        .registerArray3(registerArray3),
-        .registerArray4(registerArray4),
-        .registerArray5(registerArray5),
-        .registerArray6(registerArray6),
-        .registerArray7(registerArray7),
-        .registerArray8(registerArray8),
-        .registerArray9(registerArray9),
-        .registerArray10(registerArray10),
-        .registerArray11(registerArray11),
-        .registerArray12(registerArray12),
-        .registerArray13(registerArray13),
-        .registerArray14(registerArray14),
-        .registerArray15(registerArray15),
-        .registerArray16(registerArray16),
-        .registerArray17(registerArray17),
-        .registerArray18(registerArray18),
-        .registerArray19(registerArray19),
-        .registerArray20(registerArray20),
-        .registerArray21(registerArray21),
-        .registerArray22(registerArray22),
-        .registerArray23(registerArray23),
-        .registerArray24(registerArray24),
-        .registerArray25(registerArray25),
-        .registerArray26(registerArray26),
-        .registerArray27(registerArray27),
-        .registerArray28(registerArray28),
-        .registerArray29(registerArray29),
-        .registerArray30(registerArray30),
-        .registerArray31(registerArray31),
-        .registerArray32(registerArray32),
         .rs1(instruction[19:15]),
         .rs2(instruction[24:20]),
         .rsWrite(instruction[11:7]),

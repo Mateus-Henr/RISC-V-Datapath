@@ -18,75 +18,11 @@
 
 module DatapathTB();
 
-    wire[31:0] registerArray1;
-    wire[31:0] registerArray2;
-    wire[31:0] registerArray3;
-    wire[31:0] registerArray4;
-    wire[31:0] registerArray5;
-    wire[31:0] registerArray6;
-    wire[31:0] registerArray7;
-    wire[31:0] registerArray8;
-    wire[31:0] registerArray9;
-    wire[31:0] registerArray10;
-    wire[31:0] registerArray11;
-    wire[31:0] registerArray12;
-    wire[31:0] registerArray13;
-    wire[31:0] registerArray14;
-    wire[31:0] registerArray15;
-    wire[31:0] registerArray16;
-    wire[31:0] registerArray17;
-    wire[31:0] registerArray18;
-    wire[31:0] registerArray19;
-    wire[31:0] registerArray20;
-    wire[31:0] registerArray21;
-    wire[31:0] registerArray22;
-    wire[31:0] registerArray23;
-    wire[31:0] registerArray24;
-    wire[31:0] registerArray25;
-    wire[31:0] registerArray26;
-    wire[31:0] registerArray27;
-    wire[31:0] registerArray28;
-    wire[31:0] registerArray29;
-    wire[31:0] registerArray30;
-    wire[31:0] registerArray31;
-    wire[31:0] registerArray32;
     wire[31:0] line;
 
     reg clock, reset;
 
     Datapath datapath(
-        registerArray1,
-        registerArray2,
-        registerArray3,
-        registerArray4,
-        registerArray5,
-        registerArray6,
-        registerArray7,
-        registerArray8,
-        registerArray9,
-        registerArray10,
-        registerArray11,
-        registerArray12,
-        registerArray13,
-        registerArray14,
-        registerArray15,
-        registerArray16,
-        registerArray17,
-        registerArray18,
-        registerArray19,
-        registerArray20,
-        registerArray21,
-        registerArray22,
-        registerArray23,
-        registerArray24,
-        registerArray25,
-        registerArray26,
-        registerArray27,
-        registerArray28,
-        registerArray29,
-        registerArray30,
-        registerArray31,
-        registerArray32,
         line,
         clock,
         reset
@@ -107,71 +43,71 @@ module DatapathTB();
     initial
         begin
             $monitor({"Register         Decimal               Binary\n",
-                        "0                %03d                   %b\n",
-                        "1                %03d                   %b\n",
-                        "2                %03d                   %b\n",
-                        "3                %03d                   %b\n",
-                        "4                %03d                   %b\n",
-                        "5                %03d                   %b\n",
-                        "6                %03d                   %b\n",
-                        "7                %03d                   %b\n",
-                        "8                %03d                   %b\n",
-                        "9                %03d                   %b\n",
-                        "10               %03d                   %b\n",
-                        "11               %03d                   %b\n",
-                        "12               %03d                   %b\n",
-                        "13               %03d                   %b\n",
-                        "14               %03d                   %b\n",
-                        "15               %03d                   %b\n",
-                        "16               %03d                   %b\n",
-                        "17               %03d                   %b\n",
-                        "18               %03d                   %b\n",
-                        "19               %03d                   %b\n",
-                        "20               %03d                   %b\n",
-                        "21               %03d                   %b\n",
-                        "22               %03d                   %b\n",
-                        "23               %03d                   %b\n",
-                        "24               %03d                   %b\n",
-                        "25               %03d                   %b\n",
-                        "26               %03d                   %b\n",
-                        "27               %03d                   %b\n",
-                        "28               %03d                   %b\n",
-                        "29               %03d                   %b\n",
-                        "30               %03d                   %b\n",
-                        "31               %03d                   %b\n",
-                        "clock = %d\nLINE = %d\n"},
-                registerArray1, registerArray1,
-                registerArray2, registerArray2,
-                registerArray3, registerArray3,
-                registerArray4, registerArray4,
-                registerArray5, registerArray5,
-                registerArray6, registerArray6,
-                registerArray7, registerArray7,
-                registerArray8, registerArray8,
-                registerArray9, registerArray9,
-                registerArray10, registerArray10,
-                registerArray11, registerArray11,
-                registerArray12, registerArray12,
-                registerArray13, registerArray13,
-                registerArray14, registerArray14,
-                registerArray15, registerArray15,
-                registerArray16, registerArray16,
-                registerArray17, registerArray17,
-                registerArray18, registerArray18,
-                registerArray19, registerArray19,
-                registerArray20, registerArray20,
-                registerArray21, registerArray21,
-                registerArray22, registerArray22,
-                registerArray23, registerArray23,
-                registerArray24, registerArray24,
-                registerArray25, registerArray25,
-                registerArray26, registerArray26,
-                registerArray27, registerArray27,
-                registerArray28, registerArray28,
-                registerArray29, registerArray29,
-                registerArray30, registerArray30,
-                registerArray31, registerArray31,
-                registerArray32, registerArray32,
+                "0                %03d                   %b\n",
+                "1                %03d                   %b\n",
+                "2                %03d                   %b\n",
+                "3                %03d                   %b\n",
+                "4                %03d                   %b\n",
+                "5                %03d                   %b\n",
+                "6                %03d                   %b\n",
+                "7                %03d                   %b\n",
+                "8                %03d                   %b\n",
+                "9                %03d                   %b\n",
+                "10               %03d                   %b\n",
+                "11               %03d                   %b\n",
+                "12               %03d                   %b\n",
+                "13               %03d                   %b\n",
+                "14               %03d                   %b\n",
+                "15               %03d                   %b\n",
+                "16               %03d                   %b\n",
+                "17               %03d                   %b\n",
+                "18               %03d                   %b\n",
+                "19               %03d                   %b\n",
+                "20               %03d                   %b\n",
+                "21               %03d                   %b\n",
+                "22               %03d                   %b\n",
+                "23               %03d                   %b\n",
+                "24               %03d                   %b\n",
+                "25               %03d                   %b\n",
+                "26               %03d                   %b\n",
+                "27               %03d                   %b\n",
+                "28               %03d                   %b\n",
+                "29               %03d                   %b\n",
+                "30               %03d                   %b\n",
+                "31               %03d                   %b\n",
+                "clock = %d\nLINE = %d\n"},
+                datapath.registerMem.registerArray[1], datapath.registerMem.registerArray[1],
+                datapath.registerMem.registerArray[2], datapath.registerMem.registerArray[2],
+                datapath.registerMem.registerArray[3], datapath.registerMem.registerArray[3],
+                datapath.registerMem.registerArray[4], datapath.registerMem.registerArray[4],
+                datapath.registerMem.registerArray[5], datapath.registerMem.registerArray[5],
+                datapath.registerMem.registerArray[6], datapath.registerMem.registerArray[6],
+                datapath.registerMem.registerArray[7], datapath.registerMem.registerArray[7],
+                datapath.registerMem.registerArray[8], datapath.registerMem.registerArray[8],
+                datapath.registerMem.registerArray[9], datapath.registerMem.registerArray[9],
+                datapath.registerMem.registerArray[10], datapath.registerMem.registerArray[10],
+                datapath.registerMem.registerArray[11], datapath.registerMem.registerArray[11],
+                datapath.registerMem.registerArray[12], datapath.registerMem.registerArray[12],
+                datapath.registerMem.registerArray[13], datapath.registerMem.registerArray[13],
+                datapath.registerMem.registerArray[14], datapath.registerMem.registerArray[14],
+                datapath.registerMem.registerArray[15], datapath.registerMem.registerArray[15],
+                datapath.registerMem.registerArray[16], datapath.registerMem.registerArray[16],
+                datapath.registerMem.registerArray[17], datapath.registerMem.registerArray[17],
+                datapath.registerMem.registerArray[18], datapath.registerMem.registerArray[18],
+                datapath.registerMem.registerArray[19], datapath.registerMem.registerArray[19],
+                datapath.registerMem.registerArray[20], datapath.registerMem.registerArray[20],
+                datapath.registerMem.registerArray[21], datapath.registerMem.registerArray[21],
+                datapath.registerMem.registerArray[22], datapath.registerMem.registerArray[22],
+                datapath.registerMem.registerArray[23], datapath.registerMem.registerArray[23],
+                datapath.registerMem.registerArray[24], datapath.registerMem.registerArray[24],
+                datapath.registerMem.registerArray[25], datapath.registerMem.registerArray[25],
+                datapath.registerMem.registerArray[26], datapath.registerMem.registerArray[26],
+                datapath.registerMem.registerArray[27], datapath.registerMem.registerArray[27],
+                datapath.registerMem.registerArray[28], datapath.registerMem.registerArray[28],
+                datapath.registerMem.registerArray[29], datapath.registerMem.registerArray[29],
+                datapath.registerMem.registerArray[30], datapath.registerMem.registerArray[30],
+                datapath.registerMem.registerArray[31], datapath.registerMem.registerArray[31],
+                datapath.registerMem.registerArray[32], datapath.registerMem.registerArray[32],
                 clock, line);
 
             $dumpfile("datapath.vcd");

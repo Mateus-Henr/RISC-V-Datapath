@@ -17,38 +17,6 @@
 module RegisterMemory(
     outRS1,
     outRS2,
-    registerArray1,
-    registerArray2,
-    registerArray3,
-    registerArray4,
-    registerArray5,
-    registerArray6,
-    registerArray7,
-    registerArray8,
-    registerArray9,
-    registerArray10,
-    registerArray11,
-    registerArray12,
-    registerArray13,
-    registerArray14,
-    registerArray15,
-    registerArray16,
-    registerArray17,
-    registerArray18,
-    registerArray19,
-    registerArray20,
-    registerArray21,
-    registerArray22,
-    registerArray23,
-    registerArray24,
-    registerArray25,
-    registerArray26,
-    registerArray27,
-    registerArray28,
-    registerArray29,
-    registerArray30,
-    registerArray31,
-    registerArray32,
     rs1,
     rs2,
     rsWrite,
@@ -61,38 +29,7 @@ module RegisterMemory(
     output reg[31:0] outRS1;                // Output to the ALU
     output reg[31:0] outRS2;                // Output to the Data write / multiplexer
 
-    output reg[31:0] registerArray1;        // Output to the Datapath
-    output reg[31:0] registerArray2;        // Output to the Datapath
-    output reg[31:0] registerArray3;        // Output to the Datapath
-    output reg[31:0] registerArray4;        // Output to the Datapath
-    output reg[31:0] registerArray5;        // Output to the Datapath
-    output reg[31:0] registerArray6;        // Output to the Datapath
-    output reg[31:0] registerArray7;        // Output to the Datapath
-    output reg[31:0] registerArray8;        // Output to the Datapath
-    output reg[31:0] registerArray9;        // Output to the Datapath
-    output reg[31:0] registerArray10;       // Output to the Datapath
-    output reg[31:0] registerArray11;       // Output to the Datapath
-    output reg[31:0] registerArray12;       // Output to the Datapath
-    output reg[31:0] registerArray13;       // Output to the Datapath
-    output reg[31:0] registerArray14;       // Output to the Datapath
-    output reg[31:0] registerArray15;       // Output to the Datapath
-    output reg[31:0] registerArray16;       // Output to the Datapath
-    output reg[31:0] registerArray17;       // Output to the Datapath
-    output reg[31:0] registerArray18;       // Output to the Datapath
-    output reg[31:0] registerArray19;       // Output to the Datapath
-    output reg[31:0] registerArray20;       // Output to the Datapath
-    output reg[31:0] registerArray21;       // Output to the Datapath
-    output reg[31:0] registerArray22;       // Output to the Datapath
-    output reg[31:0] registerArray23;       // Output to the Datapath
-    output reg[31:0] registerArray24;       // Output to the Datapath
-    output reg[31:0] registerArray25;       // Output to the Datapath
-    output reg[31:0] registerArray26;       // Output to the Datapath
-    output reg[31:0] registerArray27;       // Output to the Datapath
-    output reg[31:0] registerArray28;       // Output to the Datapath
-    output reg[31:0] registerArray29;       // Output to the Datapath
-    output reg[31:0] registerArray30;       // Output to the Datapath
-    output reg[31:0] registerArray31;       // Output to the Datapath
-    output reg[31:0] registerArray32;       // Output to the Datapath
+    reg[31:0] registerArray[31:0];
 
     input[4:0] rs1;                         // Read register1 from the instruction
     input[4:0] rs2;                         // Read register2 from the instruction
@@ -102,13 +39,10 @@ module RegisterMemory(
     input reset;                            // Reset signal
     input clk;                              // Clock
 
-    reg[31:0] registerArray[31:0];
-
-    // Set the defalt values of the registers in memory
     initial
         begin
             registerArray[0] <= 32'b0;
-            registerArray[1] <= 32'b111;          // 1 in binary
+            registerArray[1] <= 32'b111;
             registerArray[2] <= 32'b111;
             registerArray[3] <= 32'b0;
             registerArray[4] <= 32'b0;
@@ -136,10 +70,11 @@ module RegisterMemory(
             registerArray[26] <= 32'b0;
             registerArray[27] <= 32'b0;
             registerArray[28] <= 32'b0;
-            registerArray[29] <= 32'b11111100;  // 252 in binary
+            registerArray[29] <= 32'b11111100; // 252 in binary
             registerArray[30] <= 32'b0;
             registerArray[31] <= 32'b0;
         end
+
 
     // Checks if values are different from 0.
     always @(posedge clk)
@@ -187,39 +122,5 @@ module RegisterMemory(
                 begin
                     registerArray[rsWrite] <= dataWrite;
                 end
-
-            registerArray1 <= registerArray[0];
-            registerArray2 <= registerArray[1];
-            registerArray3 <= registerArray[2];
-            registerArray4 <= registerArray[3];
-            registerArray5 <= registerArray[4];
-            registerArray6 <= registerArray[5];
-            registerArray7 <= registerArray[6];
-            registerArray8 <= registerArray[7];
-            registerArray9 <= registerArray[8];
-            registerArray10 <= registerArray[9];
-            registerArray11 <= registerArray[10];
-            registerArray12 <= registerArray[11];
-            registerArray13 <= registerArray[12];
-            registerArray14 <= registerArray[13];
-            registerArray15 <= registerArray[14];
-            registerArray16 <= registerArray[15];
-            registerArray17 <= registerArray[16];
-            registerArray18 <= registerArray[17];
-            registerArray19 <= registerArray[18];
-            registerArray20 <= registerArray[19];
-            registerArray21 <= registerArray[20];
-            registerArray22 <= registerArray[21];
-            registerArray23 <= registerArray[22];
-            registerArray24 <= registerArray[23];
-            registerArray25 <= registerArray[24];
-            registerArray26 <= registerArray[25];
-            registerArray27 <= registerArray[26];
-            registerArray28 <= registerArray[27];
-            registerArray29 <= registerArray[28];
-            registerArray30 <= registerArray[29];
-            registerArray31 <= registerArray[30];
-            registerArray32 <= registerArray[31];
-
         end
 endmodule
