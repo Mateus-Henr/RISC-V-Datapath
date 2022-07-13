@@ -19,7 +19,8 @@ module ALU(
     zero,
     ALUControl,
     input1,
-    input2
+    input2,
+    clock
 );
 
     output reg[31:0] ALUOut;    // ALU output to the multplexer
@@ -28,6 +29,7 @@ module ALU(
     input[31:0] input1;         // Output register1 from registers memory
     input[31:0] input2;         // Extended immediate from Immadiate Genarator
     input[3:0] ALUControl;      // Output ALU control from ALU controller
+    input clock;
 
     // Do the logical operations based in the ALU controller signal
     always @(*)

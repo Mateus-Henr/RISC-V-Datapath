@@ -16,16 +16,18 @@
 
 module PCAdder(
     outPCAdder,
-    PC
+    PC,
+    clock
 );
 
     output reg[31:0] outPCAdder;    // PC adder +4 to the "and" multiplexer
 
     input[31:0] PC;                 // PC input from the PC module
+    input clock;
 
-    always @(PC)
+    always @(*)
         begin
-            outPCAdder <= 32'b0;
+            outPCAdder <= PC + 4;
         end
 
 endmodule

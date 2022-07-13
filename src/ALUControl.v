@@ -18,13 +18,15 @@ module ALUControl(
     outALUControl,
     funct7,
     funct3,
-    ALUOp
+    ALUOp,
+    clock
 );
     output reg[3:0] outALUControl;  // Output to control the ALU
 
     input[6:0] funct7;          // Function 7 of the Instruction
     input[2:0] funct3;          // Function 3 of the Instruction
     input[1:0] ALUOp;           // ALU operation from the Controller
+    input clock;
 
     always @(*)
     begin

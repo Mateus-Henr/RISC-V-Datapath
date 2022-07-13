@@ -19,7 +19,8 @@ module MUX32_2_1_and(
     addPC,
     addPCShift,
     zero,
-    branch
+    branch,
+    clock
 );
 
     output reg[31:0] PCNext;    // Next progam to the PC module
@@ -28,6 +29,7 @@ module MUX32_2_1_and(
     input[31:0] addPCShift;     // Program counter shifted from the shift adder
     input zero;                 // Zero signal from the ALU
     input branch;               // Branch signal from the controler
+    input clock;
 
     reg selector;               // Selector to select the adder
 

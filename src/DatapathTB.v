@@ -23,7 +23,6 @@ module DatapathTB();
     reg clock, reset;
 
     Datapath datapath(
-        line,
         clock,
         reset
     );
@@ -32,7 +31,7 @@ module DatapathTB();
         begin
             clock = 1'b0;
             reset = 1'b0;
-            #1000 $finish;
+            #640 $finish;
         end
 
     initial
@@ -75,7 +74,8 @@ module DatapathTB();
                 "29               %03d                   %b\n",
                 "30               %03d                   %b\n",
                 "31               %03d                   %b\n",
-                "clock = %d\nLINE = %d\n"},
+                "clock = %d\nPC = %d\nInstruction = %d\n"},
+                datapath.registerMem.registerArray[0], datapath.registerMem.registerArray[0],
                 datapath.registerMem.registerArray[1], datapath.registerMem.registerArray[1],
                 datapath.registerMem.registerArray[2], datapath.registerMem.registerArray[2],
                 datapath.registerMem.registerArray[3], datapath.registerMem.registerArray[3],
@@ -107,8 +107,7 @@ module DatapathTB();
                 datapath.registerMem.registerArray[29], datapath.registerMem.registerArray[29],
                 datapath.registerMem.registerArray[30], datapath.registerMem.registerArray[30],
                 datapath.registerMem.registerArray[31], datapath.registerMem.registerArray[31],
-                datapath.registerMem.registerArray[32], datapath.registerMem.registerArray[32],
-                clock, line);
+                clock, datapath.PC, datapath.instruction);
 
             $dumpfile("datapath.vcd");
             $dumpvars(0, DatapathTB);

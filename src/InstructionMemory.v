@@ -18,7 +18,7 @@ module InstructionMemory(
     out,
     PC,
     reset,
-    clock,
+    clock
 );
 
     output reg[31:0] out;               // Instruction to the Datapath

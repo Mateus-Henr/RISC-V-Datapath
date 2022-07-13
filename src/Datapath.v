@@ -17,18 +17,16 @@
 // Includes
 
 module Datapath(
-    instruction,
     clock,
     reset
 );
 
-    output wire[31:0] instruction;
     output wire[31:0] ALUrResp;
     output wire[31:0] ALUoperator;
     input reset, clock;
 
     // Wires
-    wire[31:0] PCpsadd, writeData, data1, data2, soma, PCNext, ALUout, immediate, auxiliarData, PCshift, readData, immediateSH;
+    wire[31:0] instruction, PCpsadd, writeData, data1, data2, soma, PCNext, ALUout, immediate, auxiliarData, PCshift, readData, immediateSH;
     wire branch, memRead, memtoReg, memWrite, ALUSrc, zero, regWrite; // Control
     wire[1:0] ALUOp; // Control
     wire[3:0] ALUCrt;
@@ -44,7 +42,8 @@ module Datapath(
 
     PCAdder pcAdd(
         .outPCAdder(PCpsadd),
-        .PC(PCNext)
+        .PC(PCNext),
+        .clock(clock)
     );
 
     InstructionMemory instructionMem(
@@ -62,12 +61,14 @@ module Datapath(
         .ALUSrc(ALUSrc),
         .memoryRead(memRead),
         .memoryWrite(memWrite),
-        .opcode(instruction[6:0])
+        .opcode(instruction[6:0]),
+        .clock(clock)
     );
 
     ImmediateGenerator immGen(
         .outImmediate(immediate),
-        .immediate(instruction)
+        .immediate(instruction),
+        .clock(clock)
     );
 
     ALUControl aluCrt(
@@ -93,7 +94,8 @@ module Datapath(
         .out(auxiliarData),
         .input1(data2),
         .input2(immediate),
-        .selector(ALUSrc)
+        .selector(ALUSrc),
+        .clock(clock)
     );
 
     ALU alu(
@@ -101,18 +103,21 @@ module Datapath(
         .zero(zero),
         .ALUControl(ALUCrt),
         .input1(data1),
-        .input2(auxiliarData)
+        .input2(auxiliarData),
+        .clock(clock)
     );
 
     Shifter sht(
         .shiftImmediate(immediateSH),
-        .immediate(immediate)
+        .immediate(immediate),
+        .clock(clock)
     );
 
-    PCAddeShift pcAdderShift(
+    PCAdderShift pcAdderShift(
         .PCAddShift(PCshift),
         .PC(PCNext),
-        .immediate(immediateSH)
+        .immediate(immediateSH),
+        .clock(clock)
     );
 
     MUX32_2_1_and mux32And(
@@ -120,7 +125,8 @@ module Datapath(
         .addPC(PCNext),
         .addPCShift(PCshift),
         .zero(zero),
-        .branch(branch)
+        .branch(branch),
+        .clock(clock)
     );
 //----------------------------------
     DataMemory dataMem(
@@ -137,7 +143,8 @@ module Datapath(
         .out(writeData),
         .input1(readData),
         .input2(ALUout),
-        .selector(memtoReg)
+        .selector(memtoReg),
+        .clock(clock)
     );
 
 endmodule

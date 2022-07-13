@@ -14,17 +14,19 @@
 //-------------------------------------------------------
 // Purpose:    Used to shift the Immediate
 
-module Shifter (
-shiftImmediate,
-immediate
+module Shifter(
+    shiftImmediate,
+    immediate,
+    clock
 );
     output reg [31:0]shiftImmediate;   // Shifted imeddiate to the adder 32 bits
 
-    input wire[31:0]immediate;            // Imeddiate from the Immeediate Generator 32 bits
+    input[31:0]immediate;            // Imeddiate from the Immeediate Generator 32 bits
+    input clock;
 
     // Shift the immediate
     always @ (*)
-    begin
-        shiftImmediate <= (immediate << 2);
-    end
+        begin
+            shiftImmediate <= (immediate << 2);
+        end
 endmodule

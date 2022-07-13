@@ -16,12 +16,14 @@
 
 module ImmediateGenerator(
     outImmediate,
-    immediate
+    immediate,
+    clock
 );
 
     output reg[31:0] outImmediate;  // Immediate with 32 bits
 
     input[31:0] immediate;          // Immediate with 16 bits
+    input clock;
 
     wire[31:0] opcode = immediate[6:0];              // Instruction's opcode 5 bits
     wire[2:0] funct3 = immediate[15:12];               // Instruction's funct3 3 bits

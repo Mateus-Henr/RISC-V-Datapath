@@ -23,7 +23,8 @@ module Controller(
     ALUSrc,
     memoryRead,
     memoryWrite,
-    opcode
+    opcode,
+    clock
 );
 
     output reg branch;              // Branch signal to the And multiplexer
@@ -35,6 +36,7 @@ module Controller(
     output reg[1:0] ALUOp;      // ALU operation to the ALU Controller
 
     input[6:0] opcode;               // Opcode from the instruction
+    input clock;
 
     // logic of the Controller, used to generate signals to datapath modules
     always @(*)

@@ -14,16 +14,18 @@
 //-------------------------------------------------------
 // Purpose:    Receives the PC and sums the PC and the immediate
 
-module PCAddeShift(
+module PCAdderShift(
     PCAddShift,
     PC,
-    immediate
+    immediate,
+    clock
 );
 
     output reg[31:0] PCAddShift;    // PC adds and shift to the and multiplexer
 
     input[31:0] PC;                 // PC from the PC module
     input[31:0] immediate;          // Immediate from the immediate generator
+    input clock;
 
     //add the immediate to the PC
     always @(*)

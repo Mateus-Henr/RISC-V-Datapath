@@ -1,5 +1,5 @@
 $date
-	Tue Jul 12 21:25:01 2022
+	Tue Jul 12 22:08:30 2022
 $end
 $version
 	Icarus Verilog
@@ -8,124 +8,132 @@ $timescale
 	1ps
 $end
 $scope module DatapathTB $end
-$var wire 32 ! line [31:0] $end
-$var reg 1 " clock $end
-$var reg 1 # reset $end
+$var reg 1 ! clock $end
+$var reg 1 " reset $end
 $scope module datapath $end
-$var wire 32 $ ALUoperator [31:0] $end
-$var wire 32 % ALUrResp [31:0] $end
-$var wire 1 " clock $end
-$var wire 1 # reset $end
-$var wire 1 & zero $end
-$var wire 32 ' writeData [31:0] $end
-$var wire 1 ( regWrite $end
-$var wire 32 ) readData [31:0] $end
-$var wire 1 * memtoReg $end
-$var wire 1 + memWrite $end
-$var wire 1 , memRead $end
-$var wire 32 - instruction [31:0] $end
-$var wire 32 . immediateSH [31:0] $end
-$var wire 32 / immediate [31:0] $end
-$var wire 32 0 data2 [31:0] $end
-$var wire 32 1 data1 [31:0] $end
-$var wire 1 2 branch $end
-$var wire 32 3 auxiliarData [31:0] $end
-$var wire 32 4 PCshift [31:0] $end
-$var wire 32 5 PCpsadd [31:0] $end
-$var wire 32 6 PCNext [31:0] $end
-$var wire 32 7 PC [31:0] $end
-$var wire 32 8 ALUout [31:0] $end
-$var wire 1 9 ALUSrc $end
-$var wire 2 : ALUOp [1:0] $end
-$var wire 4 ; ALUCrt [3:0] $end
+$var wire 32 # ALUoperator [31:0] $end
+$var wire 32 $ ALUrResp [31:0] $end
+$var wire 1 ! clock $end
+$var wire 1 " reset $end
+$var wire 1 % zero $end
+$var wire 32 & writeData [31:0] $end
+$var wire 1 ' regWrite $end
+$var wire 32 ( readData [31:0] $end
+$var wire 1 ) memtoReg $end
+$var wire 1 * memWrite $end
+$var wire 1 + memRead $end
+$var wire 32 , instruction [31:0] $end
+$var wire 32 - immediateSH [31:0] $end
+$var wire 32 . immediate [31:0] $end
+$var wire 32 / data2 [31:0] $end
+$var wire 32 0 data1 [31:0] $end
+$var wire 1 1 branch $end
+$var wire 32 2 auxiliarData [31:0] $end
+$var wire 32 3 PCshift [31:0] $end
+$var wire 32 4 PCpsadd [31:0] $end
+$var wire 32 5 PCNext [31:0] $end
+$var wire 32 6 PC [31:0] $end
+$var wire 32 7 ALUout [31:0] $end
+$var wire 1 8 ALUSrc $end
+$var wire 2 9 ALUOp [1:0] $end
+$var wire 4 : ALUCrt [3:0] $end
 $scope module alu $end
-$var wire 32 < input2 [31:0] $end
-$var wire 32 = input1 [31:0] $end
-$var wire 4 > ALUControl [3:0] $end
-$var reg 32 ? ALUOut [31:0] $end
-$var reg 1 & zero $end
+$var wire 1 ! clock $end
+$var wire 32 ; input2 [31:0] $end
+$var wire 32 < input1 [31:0] $end
+$var wire 4 = ALUControl [3:0] $end
+$var reg 32 > ALUOut [31:0] $end
+$var reg 1 % zero $end
 $scope function sOut $end
-$var reg 32 @ input1 [31:0] $end
-$var reg 32 A input2 [31:0] $end
+$var reg 32 ? input1 [31:0] $end
+$var reg 32 @ input2 [31:0] $end
 $upscope $end
 $upscope $end
 $scope module aluCrt $end
+$var wire 1 A clock $end
 $var wire 3 B funct3 [2:0] $end
 $var wire 7 C funct7 [6:0] $end
 $var wire 2 D ALUOp [1:0] $end
 $var reg 4 E outALUControl [3:0] $end
 $upscope $end
 $scope module control $end
+$var wire 1 ! clock $end
 $var wire 7 F opcode [6:0] $end
 $var reg 2 G ALUOp [1:0] $end
-$var reg 1 9 ALUSrc $end
-$var reg 1 2 branch $end
-$var reg 1 , memoryRead $end
-$var reg 1 * memoryToRegister $end
-$var reg 1 + memoryWrite $end
-$var reg 1 ( regWrite $end
+$var reg 1 8 ALUSrc $end
+$var reg 1 1 branch $end
+$var reg 1 + memoryRead $end
+$var reg 1 ) memoryToRegister $end
+$var reg 1 * memoryWrite $end
+$var reg 1 ' regWrite $end
 $upscope $end
 $scope module dataMem $end
 $var wire 32 H address [31:0] $end
-$var wire 1 " clock $end
-$var wire 1 + memRead $end
-$var wire 1 , memWrite $end
-$var wire 1 # reset $end
+$var wire 1 ! clock $end
+$var wire 1 * memRead $end
+$var wire 1 + memWrite $end
+$var wire 1 " reset $end
 $var wire 32 I writeData [31:0] $end
 $var reg 32 J readData [31:0] $end
 $upscope $end
 $scope module immGen $end
+$var wire 1 ! clock $end
 $var wire 32 K opcode [31:0] $end
 $var wire 32 L immediate [31:0] $end
 $var wire 3 M funct3 [2:0] $end
 $var reg 32 N outImmediate [31:0] $end
 $upscope $end
 $scope module instructionMem $end
-$var wire 1 " clock $end
-$var wire 1 # reset $end
+$var wire 1 ! clock $end
+$var wire 1 " reset $end
 $var wire 32 O PC [31:0] $end
 $var reg 32 P out [31:0] $end
 $upscope $end
 $scope module mux1 $end
+$var wire 1 ! clock $end
 $var wire 32 Q input2 [31:0] $end
-$var wire 1 9 selector $end
+$var wire 1 8 selector $end
 $var wire 32 R input1 [31:0] $end
 $var reg 32 S out [31:0] $end
 $upscope $end
 $scope module mux2 $end
+$var wire 1 ! clock $end
 $var wire 32 T input1 [31:0] $end
 $var wire 32 U input2 [31:0] $end
-$var wire 1 * selector $end
+$var wire 1 ) selector $end
 $var reg 32 V out [31:0] $end
 $upscope $end
 $scope module mux32And $end
-$var wire 1 2 branch $end
-$var wire 1 & zero $end
+$var wire 1 1 branch $end
+$var wire 1 ! clock $end
+$var wire 1 % zero $end
 $var wire 32 W addPCShift [31:0] $end
 $var wire 32 X addPC [31:0] $end
 $var reg 32 Y PCNext [31:0] $end
 $var reg 1 Z selector $end
 $upscope $end
 $scope module pcAdd $end
+$var wire 1 ! clock $end
 $var wire 32 [ PC [31:0] $end
 $var reg 32 \ outPCAdder [31:0] $end
 $upscope $end
 $scope module pcAdderShift $end
+$var wire 1 ! clock $end
 $var wire 32 ] immediate [31:0] $end
 $var wire 32 ^ PC [31:0] $end
 $var reg 32 _ PCAddShift [31:0] $end
 $upscope $end
 $scope module programCounter $end
 $var wire 32 ` PCNext [31:0] $end
-$var wire 1 " clock $end
-$var wire 1 # reset $end
+$var wire 1 ! clock $end
+$var wire 1 " reset $end
 $var reg 32 a outPCNext [31:0] $end
 $upscope $end
 $scope module registerMem $end
-$var wire 1 " clk $end
+$var wire 1 ! clk $end
 $var wire 32 b dataWrite [31:0] $end
-$var wire 1 ( rWrite $end
-$var wire 1 # reset $end
+$var wire 1 ' rWrite $end
+$var wire 1 " reset $end
 $var wire 5 c rs1 [4:0] $end
 $var wire 5 d rs2 [4:0] $end
 $var wire 5 e rsWrite [4:0] $end
@@ -133,6 +141,7 @@ $var reg 32 f outRS1 [31:0] $end
 $var reg 32 g outRS2 [31:0] $end
 $upscope $end
 $scope module sht $end
+$var wire 1 ! clock $end
 $var wire 32 h immediate [31:0] $end
 $var reg 32 i shiftImmediate [31:0] $end
 $upscope $end
@@ -149,16 +158,16 @@ bx e
 bx d
 bx c
 bx b
-bx a
-bx `
+b0 a
+b0 `
 bx _
-bx ^
+b0 ^
 bx ]
-bx \
-bx [
+b100 \
+b0 [
 xZ
-bx Y
-bx X
+b0 Y
+b0 X
 bx W
 bx V
 bx U
@@ -167,7 +176,7 @@ bx S
 bx R
 bx Q
 bx P
-bx O
+b0 O
 bx N
 bx M
 bx L
@@ -181,7 +190,7 @@ bx E
 bx D
 bx C
 bx B
-bx A
+zA
 bx @
 bx ?
 bx >
@@ -189,129 +198,144 @@ bx =
 bx <
 bx ;
 bx :
-x9
-bx 8
+bx 9
+x8
 bx 7
-bx 6
-bx 5
-bx 4
+b0 6
+b0 5
+b100 4
 bx 3
-x2
-bx 1
+bx 2
+x1
 bx 0
 bx /
 bx .
 bx -
-x,
+bx ,
 x+
 x*
-bx )
-x(
-bx '
-x&
-bz %
+x)
+bx (
+x'
+bx &
+x%
 bz $
-0#
+bz #
 0"
-bx !
+0!
 $end
 #20000
-1"
+0%
+b10 :
+b10 =
+b10 E
+0Z
+b10 9
+b10 D
+b10 G
+01
+0*
+0+
+1'
+0)
+08
+b0 M
+b110011 K
+b1 e
+b1 d
+b1 c
+b0 B
+b0 C
+b110011 F
+b100001000000010110011 ,
+b100001000000010110011 L
+b100001000000010110011 P
+1!
 #40000
-0"
+0!
 #60000
-1"
+b1110 7
+b1110 >
+b1110 H
+b1110 U
+b111 2
+b111 ;
+b111 S
+b111 /
+b111 R
+b111 g
+b111 0
+b111 <
+b111 f
+1!
 #80000
-0"
+0!
 #100000
-1"
+bx 2
+bx ;
+bx S
+bx 7
+bx >
+bx H
+bx U
+bx /
+bx R
+bx g
+bx 0
+bx <
+bx f
+1!
 #120000
-0"
+0!
 #140000
-1"
+1!
 #160000
-0"
+0!
 #180000
-1"
+1!
 #200000
-0"
+0!
 #220000
-1"
+1!
 #240000
-0"
+0!
 #260000
-1"
+1!
 #280000
-0"
+0!
 #300000
-1"
+1!
 #320000
-0"
+0!
 #340000
-1"
+1!
 #360000
-0"
+0!
 #380000
-1"
+1!
 #400000
-0"
+0!
 #420000
-1"
+1!
 #440000
-0"
+0!
 #460000
-1"
+1!
 #480000
-0"
+0!
 #500000
-1"
+1!
 #520000
-0"
+0!
 #540000
-1"
+1!
 #560000
-0"
+0!
 #580000
-1"
+1!
 #600000
-0"
+0!
 #620000
-1"
+1!
 #640000
-0"
-#660000
-1"
-#680000
-0"
-#700000
-1"
-#720000
-0"
-#740000
-1"
-#760000
-0"
-#780000
-1"
-#800000
-0"
-#820000
-1"
-#840000
-0"
-#860000
-1"
-#880000
-0"
-#900000
-1"
-#920000
-0"
-#940000
-1"
-#960000
-0"
-#980000
-1"
-#1000000
-0"
+0!
