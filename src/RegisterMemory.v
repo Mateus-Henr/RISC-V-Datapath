@@ -42,7 +42,7 @@ module RegisterMemory(
     initial
         begin
             registerArray[0] <= 32'b0;
-            registerArray[1] <= 32'b111;
+            registerArray[1] <= 32'b0;
             registerArray[2] <= 32'b111;
             registerArray[3] <= 32'b0;
             registerArray[4] <= 32'b0;

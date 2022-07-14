@@ -17,7 +17,8 @@
 module PCAdder(
     outPCAdder,
     PC,
-    clock
+    clock,
+    reset
 );
 
     output reg[31:0] outPCAdder;    // PC adder +4 to the "and" multiplexer

@@ -32,27 +32,26 @@ module ALU(
     input clock;
 
     // Do the logical operations based in the ALU controller signal
-    always @(*)
+    always @(posedge clock)
         begin
             case (ALUControl)
-                4'b0000: ALUOut <= input1 & input2;         // And
-                4'b0001: ALUOut <= input1 | input2;         // Or
-                4'b0010: ALUOut <= input1+input2;           // Sum
-                4'b0110: ALUOut <= input1-input2;           // Sub
-                4'b0111: ALUOut <= (input1 < input2);
-                4'b1100: ALUOut <= ~(input1 | input2);
-                default: ALUOut <= 32'b0;                   // Default
+                4'b0000: ALUOut = input1 & input2;   // And
+                4'b0001: ALUOut = input1 | input2; // Or
+                4'b0010: ALUOut = input1+input2;   // Sum
+                4'b0110: ALUOut = input1-input2;       // Sub
+                4'b0111: ALUOut = (input1  & input2);
+                4'b1100: ALUOut = ~(input1 | input2);
+                default: ALUOut = 32'b0;                               // Default
             endcase
 
-            if (!ALUOut)
+            if (ALUOut == 32'b0)
                 begin
-                    zero <= 1;
+                    zero = 1;
                 end
             else
                 begin
-                    zero <= 0;
+                    zero = 0;
                 end
-
         end
 
 
