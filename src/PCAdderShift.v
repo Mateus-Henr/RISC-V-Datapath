@@ -28,9 +28,13 @@ module PCAdderShift(
     input clock;
 
     //add the immediate to the PC
-    always @(*)
+    always @(posedge clock)
         begin
-            PCAddShift <= PC+immediate;
+            PCAddShift = PC+immediate;
+            if (reset)
+                begin
+                    PCAddShift = 32'd0;
+                end
         end
 
 endmodule

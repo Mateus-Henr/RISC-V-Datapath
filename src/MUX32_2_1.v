@@ -30,15 +30,15 @@ module MUX_32_2_1(
     input clock;
 
     //choose the value for the ALU / value to write in the register
-    always @(*)
+    always @(posedge clock)
         begin
             if (selector)
                 begin
-                    out <= input2;
+                    out = input2;
                 end
             else
                 begin
-                    out <= input1;
+                    out = input1;
                 end
         end
 

@@ -25,9 +25,13 @@ module PCAdder(
     input[31:0] PC;                 // PC input from the PC module
     input clock;
 
-    always @(*)
-        begin
-            outPCAdder <= PC + 4;
+    always @(posedge clock)
+            begin
+            outPCAdder = PC + 32'd4;
+            if (reset)
+                begin
+                    outPCAdder = 32'd0;
+                end
         end
 
 endmodule

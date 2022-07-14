@@ -25,8 +25,8 @@ module Shifter(
     input clock;
 
     // Shift the immediate
-    always @ (*)
+    always @ (posedge clock)
         begin
-            shiftImmediate <= (immediate << 2);
+            shiftImmediate = (immediate << 2);
         end
 endmodule

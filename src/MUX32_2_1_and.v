@@ -34,17 +34,17 @@ module MUX32_2_1_and(
     reg selector;               // Selector to select the adder
 
     // Makes a "and" with "zero" signal and branch to chouse the adder
-    always @(*)
+    always @(posedge clock)
         begin
-            selector <= zero & branch;
+            selector = zero & branch;
 
             if (selector)
                 begin
-                    PCNext <= addPCShift;
+                    PCNext = addPCShift;
                 end
             else
                 begin
-                    PCNext <= addPC;
+                    PCNext = addPC;
                 end
         end
 

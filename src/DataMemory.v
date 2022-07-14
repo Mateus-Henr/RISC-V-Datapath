@@ -36,7 +36,7 @@ module DataMemory(
     reg[31:0] dataArray[31:0];  // Data memory
 
     // reset all the memory to the default
-    always @(reset)
+    always @(posedge clock)
         begin
             if (reset)
                 begin
