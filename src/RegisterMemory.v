@@ -22,7 +22,7 @@ module RegisterMemory(
     rsWrite,
     dataWrite,
     rWrite,
-    clk,
+    clock,
     reset
 );
 
@@ -37,7 +37,7 @@ module RegisterMemory(
     input[31:0] dataWrite;                  // Data write from the multplexer
     input rWrite;                           // Register write signal from the controller
     input reset;                            // Reset signal
-    input clk;                              // Clock
+    input clock;                              // Clock
 
     initial
         begin
@@ -77,7 +77,7 @@ module RegisterMemory(
 
 
     // Checks if values are different from 0.
-    always @(posedge clk)
+    always @(posedge clock)
         begin
             if (reset)
                 begin
@@ -115,10 +115,10 @@ module RegisterMemory(
                     registerArray[31] <= 32'b0;
                 end
 
-            outRS1 <= registerArray[rs1];
-            outRS2 <= registerArray[rs2];
+            outRS1 = registerArray[rs1];
+            outRS2 = registerArray[rs2];
 
-            if (rWrite)
+            if (rWrite == 1 && rsWrite != 0)
                 begin
                     registerArray[rsWrite] <= dataWrite;
                 end

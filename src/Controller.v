@@ -18,7 +18,7 @@ module Controller(
     // RegDst,
     ALUOp,
     branch,
-    regWrite,
+    rWrite,
     memoryToRegister,
     ALUSrc,
     memoryRead,
@@ -28,7 +28,7 @@ module Controller(
 );
 
     output reg branch;              // Branch signal to the And multiplexer
-    output reg regWrite;            // Register write signal to the register memory
+    output reg rWrite;            // Register write signal to the register memory
     output reg memoryToRegister;    // Memory to register signal to the multplexer
     output reg ALUSrc;              // ALU Src signal to the mutplexer
     output reg memoryRead;          // read Memory signal to the Datamemory
@@ -46,7 +46,7 @@ module Controller(
                     begin
                         ALUSrc = 1'b0;//certo
                         memoryToRegister = 1'b0;//certo
-                        regWrite = 1'b1;//certo
+                        rWrite = 1'b1;//certo
                         memoryRead = 1'b0;//certo
                         memoryWrite = 1'b0;//certo
                         branch = 1'b0; //certo
@@ -56,7 +56,7 @@ module Controller(
                     begin
                         ALUSrc = 1'b1;//certo
                         memoryToRegister = 1'b1;//certo
-                        regWrite = 1'b1;//certo
+                        rWrite = 1'b1;//certo
                         memoryRead = 1'b1;//certo
                         memoryWrite = 1'b0;//certo
                         branch = 1'b0;//certo
@@ -66,7 +66,7 @@ module Controller(
                     begin
                         ALUSrc = 1'b1;//certo
                         memoryToRegister = 1'b0;
-                        regWrite = 1'b0;
+                        rWrite = 1'b0;
                         memoryRead = 1'b0;
                         memoryWrite = 1'b1;//certo
                         branch = 1'b0;
@@ -76,7 +76,7 @@ module Controller(
                     begin
                         ALUSrc = 1'b0;
                         memoryToRegister = 1'b0;
-                        regWrite = 1'b0;
+                        rWrite = 1'b0;
                         memoryRead = 1'b0;
                         memoryWrite = 1'b0;
                         branch = 1'b1;//certo
