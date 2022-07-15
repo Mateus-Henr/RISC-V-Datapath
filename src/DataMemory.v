@@ -73,12 +73,8 @@ module DataMemory(
                     dataArray[30] <= 32'd30;
                     dataArray[31] <= 32'd31;
                 end
-        end
 
-    // Write or read from the data memory based on the address
-    always @(posedge clock)
-        begin
-            if (memWrite)
+            else if (memWrite)
                 begin
                     dataArray[position] <= writeData;
                 end

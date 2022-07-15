@@ -16,7 +16,7 @@
 
 module PCAdder(
     outPCAdder,
-    PC,
+    outPCNext,
     clock,
     reset
 );

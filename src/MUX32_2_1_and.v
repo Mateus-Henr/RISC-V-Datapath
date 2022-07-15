@@ -47,7 +47,7 @@ module MUX32_2_1_and(
                 begin
                     PCNext = addPCShift;
                 end
-            else
+            if (selector == 0)
                 begin
                     PCNext = addPC;
                 end

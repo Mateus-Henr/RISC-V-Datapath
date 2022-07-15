@@ -16,9 +16,10 @@
 
 module PCAdderShift(
     PCAddShift,
-    PC,
+    outPCNext,
     immediate,
-    clock
+    clock,
+    reset
 );
 
     output reg[31:0] PCAddShift;    // PC adds and shift to the and multiplexer

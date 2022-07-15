@@ -62,8 +62,9 @@ module Datapath(
 
     PCAdder pcAdd(
         .outPCAdder(PCpsadd),
-        .PC(PCNext),
-        .clock(clock)
+        .outPCNext(PCNext),
+        .clock(clock),
+        .reset(reset)
     );
 
     InstructionMemory instructionMem(
@@ -147,8 +148,8 @@ module Datapath(
     );
 
     MUX32_2_1_and mux32And(
-        .PCNext(PC),
-        .addPC(PCNext),
+        .PCNext(PC ),
+        .addPC(PCpsadd),
         .addPCShift(PCshift),
         .zero(zero),
         .branch(branch),
@@ -157,9 +158,10 @@ module Datapath(
 
     PCAdderShift pcAdderShift(
         .PCAddShift(PCshift),
-        .PC(PCNext),
+        .outPCNext(PCNext),
         .immediate(immediateSH),
-        .clock(clock)
+        .clock(clock),
+        .reset(reset)
     );
 
 endmodule

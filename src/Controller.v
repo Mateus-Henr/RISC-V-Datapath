@@ -32,9 +32,9 @@ module Controller(
     output reg ALUSrc;              // ALU Src signal to the mutplexer
     output reg memoryRead;          // read Memory signal to the Datamemory
     output reg memoryWrite;         // write Memory signal to the Datamemory
-    output reg[1:0] ALUOp;      // ALU operation to the ALU Controller
+    output reg[1:0] ALUOp;          // ALU operation to the ALU Controller
 
-    input[6:0] opcode;               // Opcode from the instruction
+    input[6:0] opcode;              // Opcode from the instruction
     input clock;
 
     // logic of the Controller, used to generate signals to datapath modules
