@@ -38,8 +38,7 @@ module Datapath(
                immediate,
                auxiliarData,
                PCshift,
-               readData,
-               immediateSH;
+               readData;
 
     wire branch,
          memRead,
@@ -132,10 +131,10 @@ module Datapath(
     DataMemory dataMem(
         .readData(readData),
         .position(ALUout),
-        .writeData(writeData),
-        .clock(clock),
+        .writeData(data2),
         .memWrite(memRead),
         .memRead(memWrite),
+        .clock(clock),
         .reset(reset)
     );
 
@@ -148,7 +147,7 @@ module Datapath(
     );
 
     MUX32_2_1_and mux32And(
-        .PCNext(PC ),
+        .PCNext(PC),
         .addPC(PCpsadd),
         .addPCShift(PCshift),
         .zero(zero),
@@ -159,7 +158,7 @@ module Datapath(
     PCAdderShift pcAdderShift(
         .PCAddShift(PCshift),
         .outPCNext(PCNext),
-        .immediate(immediateSH),
+        .immediate(immediate),
         .clock(clock),
         .reset(reset)
     );

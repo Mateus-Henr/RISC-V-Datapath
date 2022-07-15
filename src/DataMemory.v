@@ -18,9 +18,9 @@ module DataMemory(
     readData,
     position,
     writeData,
-    clock,
     memWrite,
     memRead,
+    clock,
     reset
 );
 
