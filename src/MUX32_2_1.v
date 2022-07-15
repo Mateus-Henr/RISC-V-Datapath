@@ -34,11 +34,11 @@ module MUX_32_2_1(
         begin
             if (selector)
                 begin
-                    out <= input2;
+                    out = input2;
                 end
             else
                 begin
-                    out <= input1;
+                    out = input1;
                 end
         end
 

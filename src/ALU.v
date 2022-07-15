@@ -46,11 +46,11 @@ module ALU(
 
             if (ALUOut == 32'b0)
                 begin
-                    zero <= 1'b1;
+                    zero = 1'b1;
                 end
             else
                 begin
-                    zero <= 1'b0;
+                    zero = 1'b0;
                 end
         end
 
