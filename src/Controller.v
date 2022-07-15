@@ -43,43 +43,43 @@ module Controller(
             case (opcode)
                 7'b0110011: // R-format
                     begin
-                        ALUSrc = 1'b0;//certo
-                        memoryToRegister = 1'b0;//certo
-                        rWrite = 1'b1;//certo
-                        memoryRead = 1'b0;//certo
-                        memoryWrite = 1'b0;//certo
-                        branch = 1'b0; //certo
-                        ALUOp = 2'b10;//certo
+                        ALUSrc <= 1'b0;//certo
+                        memoryToRegister <= 1'b0;//certo
+                        rWrite <= 1'b1;//certo
+                        memoryRead <= 1'b0;//certo
+                        memoryWrite <= 1'b0;//certo
+                        branch <= 1'b0; //certo
+                        ALUOp <= 2'b10;//certo
                     end
                 7'b0000011: // LD
                     begin
-                        ALUSrc = 1'b1;//certo
-                        memoryToRegister = 1'b1;//certo
-                        rWrite = 1'b1;//certo
-                        memoryRead = 1'b1;//certo
-                        memoryWrite = 1'b0;//certo
-                        branch = 1'b0;//certo
-                        ALUOp = 2'b00;//certo
+                        ALUSrc <= 1'b1;//certo
+                        memoryToRegister <= 1'b1;//certo
+                        rWrite <= 1'b1;//certo
+                        memoryRead <= 1'b1;//certo
+                        memoryWrite <= 1'b0;//certo
+                        branch <= 1'b0;//certo
+                        ALUOp <= 2'b00;//certo
                     end
                 7'b0100011: // SD
                     begin
-                        ALUSrc = 1'b1;//certo
-                        memoryToRegister = 1'b0;
-                        rWrite = 1'b0;
-                        memoryRead = 1'b0;
-                        memoryWrite = 1'b1;//certo
-                        branch = 1'b0;
-                        ALUOp = 2'b00;
+                        ALUSrc <= 1'b1;//certo
+                        memoryToRegister <= 1'b0;
+                        rWrite <= 1'b0;
+                        memoryRead <= 1'b0;
+                        memoryWrite <= 1'b1;//certo
+                        branch <= 1'b0;
+                        ALUOp <= 2'b00;
                     end
                 7'b1100011: // BEQ
                     begin
-                        ALUSrc = 1'b0;
-                        memoryToRegister = 1'b0;
-                        rWrite = 1'b0;
-                        memoryRead = 1'b0;
-                        memoryWrite = 1'b0;
-                        branch = 1'b1;//certo
-                        ALUOp = 2'b01;//certo
+                        ALUSrc <= 1'b0;
+                        memoryToRegister <= 1'b0;
+                        rWrite <= 1'b0;
+                        memoryRead <= 1'b0;
+                        memoryWrite <= 1'b0;
+                        branch <= 1'b1;//certo
+                        ALUOp <= 2'b01;//certo
                     end
             endcase
         end

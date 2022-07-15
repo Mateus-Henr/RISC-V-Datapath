@@ -106,6 +106,13 @@ module InstructionMemory(
                     instructionArray[31] <= 32'b0;
                 end
 
-            out <= instructionArray[PC/4];
+            if(instructionArray[PC/4]== 0)
+                        begin
+                            $finish;
+                        end
+            else
+            begin
+             out = instructionArray[PC/4];
+            end
         end
 endmodule
