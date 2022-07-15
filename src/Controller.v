@@ -15,7 +15,6 @@
 // Purpose:    control of the datapath
 
 module Controller(
-    // RegDst,
     ALUOp,
     branch,
     rWrite,

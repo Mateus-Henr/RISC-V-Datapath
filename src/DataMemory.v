@@ -16,7 +16,7 @@
 
 module DataMemory(
     readData,
-    address,
+    position,
     writeData,
     clock,
     memWrite,
@@ -26,7 +26,7 @@ module DataMemory(
 
     output reg[31:0] readData;  // Reads data to the multiplexer
 
-    input[31:0] address;        // Address to pick from the ALU
+    input[31:0] position;        // Address to pick from the ALU
     input[31:0] writeData;      // Out register from the register memory
     input reset;                // Reset signal to reset the memory
     input clock;                // Clock signal
@@ -80,12 +80,12 @@ module DataMemory(
         begin
             if (memWrite)
                 begin
-                    dataArray[address] <= writeData;
+                    dataArray[position] <= writeData;
                 end
 
             else if (memRead)
                 begin
-                    readData <= dataArray[address];
+                    readData <= dataArray[position];
                 end
         end
 

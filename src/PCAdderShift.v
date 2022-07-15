@@ -23,17 +23,20 @@ module PCAdderShift(
 
     output reg[31:0] PCAddShift;    // PC adds and shift to the and multiplexer
 
-    input[31:0] PC;                 // PC from the PC module
+    input[31:0] outPCNext;                 // PC from the PC module
     input[31:0] immediate;          // Immediate from the immediate generator
-    input clock;
+    input reset, clock;
 
     //add the immediate to the PC
     always @(posedge clock)
         begin
-            PCAddShift = PC+immediate;
             if (reset)
                 begin
                     PCAddShift = 32'd0;
+                end
+            else
+                begin
+                    PCAddShift = outPCNext+immediate;
                 end
         end
 

@@ -25,23 +25,23 @@ module ImmediateGenerator(
     input[31:0] immediate;          // Immediate with 16 bits
     input clock;
 
-    reg [6:0] opcode = immediate[6:0];              // Instruction's opcode 5 bits
+//    reg [6:0] opcode = immediate[6:0];              // Instruction's opcode 5 bits
 
     // Amplify Immediate extendint with zeros for positive numbers and one for the negative numbers
     always @(posedge clock)
         begin
-            case (opcode)
+            case (immediate[6:0])
                 7'b0100011:
                     begin
-                        outImmediate = {{21{immediate[31]}}, immediate[31:25], immediate[11:7]};                // SD Stype
+                        outImmediate <= {{21{immediate[31]}}, immediate[31:25], immediate[11:7]};                // SD Stype
                     end
                 7'b0000011:
                     begin
-                        outImmediate = {{21{immediate[31]}}, immediate[31:20]};                                 // LD Itype
+                        outImmediate <= {{21{immediate[31]}}, immediate[31:20]};                                 // LD Itype
                     end
                 7'b1100011:
                     begin
-                        outImmediate = {{20{immediate[31]}}, immediate[7], immediate[30:25], immediate[11:8]}; //branch
+                        outImmediate <= {{20{immediate[31]}}, immediate[7], immediate[30:25], immediate[11:8]}; //branch
                     end
             endcase
         end

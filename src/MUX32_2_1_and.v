@@ -36,9 +36,14 @@ module MUX32_2_1_and(
     // Makes a "and" with "zero" signal and branch to chouse the adder
     always @(posedge clock)
         begin
-            selector = zero & branch;
-
-            if (selector)
+        if (zero == 1 && branch== 1)begin
+                selector = 1;
+            end
+        else begin
+            selector = 0;
+        end
+        selector = 0;
+            if (selector == 1)
                 begin
                     PCNext = addPCShift;
                 end

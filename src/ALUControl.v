@@ -28,36 +28,36 @@ module ALUControl(
     input[1:0] ALUOp;           // ALU operation from the Controller
     input clock;
 
-    always @(*)
-    begin
-        if (ALUOp == 2'b00 && funct3 == 3'b011)      //outALUControl => ld
+    always @(posedge clock)
         begin
-            outALUControl = 4'b0010;
+            if (ALUOp == 2'b00 && funct3 == 3'b010)      //outALUControl => ld
+                begin
+                    outALUControl <= 4'b0010;
+                end
+            else if (ALUOp == 2'b00 && funct3 == 3'b111) //outALUControl => sd
+                begin
+                    outALUControl <= 4'b0010;
+                end
+            else if (ALUOp == 2'b01 && funct3 == 3'b000) //outALUControl => beq
+                begin
+                    outALUControl <= 4'b0110;
+                end
+            else if (ALUOp == 2'b10 && funct7 == 7'b0000000 && funct3 == 3'b000) // outALUControl => add
+                begin
+                    outALUControl <= 4'b0010;
+                end
+            else if (ALUOp == 2'b10 && funct7 == 7'b0100000 && funct3 == 3'b000) // outALUControl => sub
+                begin
+                    outALUControl <= 4'b0110;
+                end
+            else if (ALUOp == 2'b10 && funct7 == 7'b0000000 && funct3 == 3'b111) // outALUControl => and
+                begin
+                    outALUControl <= 4'b0000;
+                end
+            else if (ALUOp == 2'b10 && funct7 == 7'b0000000 && funct3 == 3'b110) // outALUControl => or
+                begin
+                    outALUControl <= 4'b0001;
+                end
         end
-        else if (ALUOp == 2'b00 && funct3 == 3'b111) //outALUControl => sd
-        begin
-            outALUControl = 4'b0010;
-        end
-        else if (ALUOp == 2'b01 && funct3 == 3'b000) //outALUControl => beq
-        begin
-            outALUControl = 4'b0110;
-        end
-        else if (ALUOp == 2'b10 && funct7 == 7'b0000000 && funct3 == 3'b000 ) // outALUControl => add
-        begin
-            outALUControl = 4'b0010;
-        end
-        else if (ALUOp == 2'b10 && funct7 == 7'b0100000 && funct3 == 3'b000) // outALUControl => sub
-        begin
-            outALUControl = 4'b0110;
-        end
-        else if (ALUOp == 2'b10 && funct7 == 7'b0000000 && funct3 == 3'b111) // outALUControl => and
-        begin
-            outALUControl = 4'b0000;
-        end
-        else if (ALUOp == 2'b10 && funct7 == 7'b0000000 && funct3 == 3'b110) // outALUControl => or
-        begin
-            outALUControl = 4'b0001;
-        end
-    end
 
 endmodule

@@ -107,7 +107,7 @@ module DatapathTB();
                 datapath.registerMem.registerArray[29], datapath.registerMem.registerArray[29],
                 datapath.registerMem.registerArray[30], datapath.registerMem.registerArray[30],
                 datapath.registerMem.registerArray[31], datapath.registerMem.registerArray[31],
-                clock, datapath.PC, datapath.instruction);
+                clock, datapath.PCNext, datapath.instruction);
 
             $dumpfile("datapath.vcd");
             $dumpvars(0, DatapathTB);

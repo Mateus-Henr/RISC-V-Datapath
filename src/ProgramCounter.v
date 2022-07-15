@@ -29,7 +29,7 @@ module ProgramCounter(
 
     initial
         begin
-            outPCNext = 32'b0;
+            outPCNext <= 32'b0;
         end
 
     // Check if the PC needs to reset or reads the next pc
@@ -37,11 +37,11 @@ module ProgramCounter(
         begin
             if (reset) // If reset signal is activated, we set the PC back to 0.
                 begin
-                    outPCNext = 32'b0;
+                    outPCNext <= 32'b0;
                 end
             else
                 begin
-                    outPCNext = PCNext;
+                    outPCNext <= PCNext;
                 end
         end
 

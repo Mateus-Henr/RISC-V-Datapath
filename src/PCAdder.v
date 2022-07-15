@@ -23,15 +23,18 @@ module PCAdder(
 
     output reg[31:0] outPCAdder;    // PC adder +4 to the "and" multiplexer
 
-    input[31:0] PC;                 // PC input from the PC module
-    input clock;
+    input[31:0] outPCNext;                 // PC input from the PC module
+    input reset, clock;
 
     always @(posedge clock)
-            begin
-            outPCAdder = PC + 32'd4;
+        begin
             if (reset)
                 begin
                     outPCAdder = 32'd0;
+                end
+            else
+                begin
+                    outPCAdder = outPCNext+32'd4;
                 end
         end
 

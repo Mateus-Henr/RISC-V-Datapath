@@ -39,39 +39,19 @@ module ALU(
                 4'b0001: ALUOut = input1 | input2; // Or
                 4'b0010: ALUOut = input1+input2;   // Sum
                 4'b0110: ALUOut = input1-input2;       // Sub
-                4'b0111: ALUOut = (input1  & input2);
+                4'b0111: ALUOut = (input1 & input2);
                 4'b1100: ALUOut = ~(input1 | input2);
                 default: ALUOut = 32'b0;                               // Default
             endcase
 
             if (ALUOut == 32'b0)
                 begin
-                    zero = 1;
+                    zero <= 1'b1;
                 end
             else
                 begin
-                    zero = 0;
+                    zero <= 1'b0;
                 end
         end
-
-
-    //Do operations with signed numbers
-    function [31:0] sOut;
-
-        input[31:0] input1, input2;
-
-        begin
-            case (input2[31])
-                1'b1:
-                begin
-                    input2 = ~input2;
-                    input2 = input2+1'b1;
-                    sOut = input1+input2;
-                end
-                default: sOut = input1+input2;
-            endcase
-        end
-
-    endfunction
 
 endmodule

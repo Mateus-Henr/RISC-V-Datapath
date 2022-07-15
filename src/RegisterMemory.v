@@ -75,7 +75,6 @@ module RegisterMemory(
             registerArray[31] <= 32'b0;
         end
 
-
     // Checks if values are different from 0.
     always @(posedge clock)
         begin
@@ -114,13 +113,15 @@ module RegisterMemory(
                     registerArray[30] <= 32'b0;
                     registerArray[31] <= 32'b0;
                 end
+               else
+                   begin
+                        outRS1 <= registerArray[rs1];
+                        outRS2 <= registerArray[rs2];
 
-            outRS1 = registerArray[rs1];
-            outRS2 = registerArray[rs2];
-
-            if (rWrite == 1 && rsWrite != 0)
-                begin
-                    registerArray[rsWrite] <= dataWrite;
+                        if (rWrite == 1'b1 && rsWrite != 1'b0)
+                        begin
+                            registerArray[rsWrite] <= dataWrite;
+                        end
                 end
         end
 endmodule

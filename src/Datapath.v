@@ -21,16 +21,36 @@ module Datapath(
     reset
 );
 
-    output wire[31:0] ALUrResp;
-    output wire[31:0] ALUoperator;
     input reset, clock;
 
     // Wires
-    wire[31:0] instruction, PCpsadd, writeData, data1, data2, soma, PCNext, ALUout, immediate, auxiliarData, PCshift, readData, immediateSH;
-    wire branch, memRead, memtoReg, memWrite, ALUSrc, zero, rWrite; // Control
+    wire[31:0] ALUrResp,
+               ALUoperator,
+               PC,
+               instruction,
+               PCpsadd,
+               writeData,
+               data1,
+               data2,
+               soma,
+               PCNext,
+               ALUout,
+               immediate,
+               auxiliarData,
+               PCshift,
+               readData,
+               immediateSH;
+
+    wire branch,
+         memRead,
+         memtoReg,
+         memWrite,
+         ALUSrc,
+         zero,
+         rWrite; // Control
+
     wire[1:0] ALUOp; // Control
     wire[3:0] ALUCrt;
-    wire[31:0] PC;
 
     // Modules
     ProgramCounter programCounter(
@@ -87,7 +107,7 @@ module Datapath(
         .outALUControl(ALUCrt),
         .funct7(instruction[31:25]),
         .funct3(instruction[14:12]),
-        .ALUOp(ALUOp)
+        .ALUOp(ALUOp),
         .clock(clock)
     );
 
@@ -110,7 +130,7 @@ module Datapath(
 
     DataMemory dataMem(
         .readData(readData),
-        .address(ALUout),
+        .position(ALUout),
         .writeData(writeData),
         .clock(clock),
         .memWrite(memRead),
