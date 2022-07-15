@@ -28,6 +28,9 @@ module PCAdderShift(
     input[31:0] immediate;          // Immediate from the immediate generator
     input reset, clock;
 
+    initial begin
+     PCAddShift = 32'd0;
+    end
     //add the immediate to the PC
     always @(posedge clock)
         begin

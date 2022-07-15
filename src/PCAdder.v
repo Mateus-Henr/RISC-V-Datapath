@@ -26,6 +26,9 @@ module PCAdder(
     input[31:0] outPCNext;                 // PC input from the PC module
     input reset, clock;
 
+    initial begin
+        outPCAdder = 32'd0;
+    end
     always @(posedge clock)
         begin
             if (reset)

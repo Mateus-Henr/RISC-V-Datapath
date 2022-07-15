@@ -14,7 +14,7 @@
 //-------------------------------------------------------
 // Purpose:    Used to perform tests
 
-`timescale 1ns/1ps
+
 
 module DatapathTB();
 
@@ -32,7 +32,10 @@ module DatapathTB();
 
     initial
         begin
-            clock <= 1'b0;
+            #1 clock <= 0;
+            #1 clock <= 0;
+            #1 clock <= 0;
+            #1 clock <= 0;
             #1 reset <= 1'b1;
             #1 reset <= 1'b0;
 
@@ -69,7 +72,7 @@ module DatapathTB();
                             "29               %03d                   %b\n",
                             "30               %03d                   %b\n",
                             "31               %03d                   %b\n",
-                            "clock = %d\nPC = %d\nInstruction = %d\n"},
+                            "clock = %d\nPC = %d\nInstruction = %b\n"},
                             datapath.registerMem.registerArray[0], datapath.registerMem.registerArray[0],
                             datapath.registerMem.registerArray[1], datapath.registerMem.registerArray[1],
                             datapath.registerMem.registerArray[2], datapath.registerMem.registerArray[2],

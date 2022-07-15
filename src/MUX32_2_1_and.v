@@ -33,6 +33,9 @@ module MUX32_2_1_and(
 
     reg selector;               // Selector to select the adder
 
+    initial begin
+    PCNext <= 32'b0;
+    end
     // Makes a "and" with "zero" signal and branch to chouse the adder
     always @(posedge clock)
         begin
